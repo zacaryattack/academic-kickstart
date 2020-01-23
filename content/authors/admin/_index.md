@@ -32,11 +32,7 @@ education:
     year: 2016
   - course: Masters of Science in Computer Science Candidate (Expected graduation May 2021)
     institution: the University of Texas at Arlington
- 
-relevant coursework:
-- Artificial Intelligence
-- Data Modeling
-- Linguistics
+
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/page-builder/#icons
