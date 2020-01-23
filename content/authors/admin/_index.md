@@ -33,7 +33,7 @@ education:
   - course: Masters of Science in Computer Science Candidate (Expected graduation May 2021)
     institution: the University of Texas at Arlington
  
- Relevant Coursework:
+ relevant coursework:
 - Artificial Intelligence
 - Data Modeling
 - Linguistics
