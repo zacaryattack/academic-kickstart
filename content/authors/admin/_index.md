@@ -18,7 +18,7 @@ organizations:
   url: ""
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include neural networks, cloud computing and automated services.
+bio: My research interests include automated services, cloud computing, and neural networks.
 
 interests:
 - Artificial Intelligence
@@ -58,4 +58,4 @@ user_groups:
 - Visitors
 ---
 
-Zacary Cotton is a student of artificial intelligence at the University of Texas at Arlington. His research interests include neural networks, cloud computing and automated services.
+Zacary Cotton is a student of artificial intelligence at the University of Texas at Arlington. His research interests include automated services, cloud computing, and neural networks.
