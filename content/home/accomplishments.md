@@ -5,12 +5,12 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 50  # Order that this section will appear.
 
-title = "Relevant&shy;Coursework"
+title = "Relevant;Coursework"
 subtitle = ""
 
 # Date format
 #   Refer to https://sourcethemes.com/academic/docs/customization/#date-format
-date_format = "Jan 2006"
+date_format = ""
 
 # Accomplishments.
 #   Add/remove as many `[[item]]` blocks below as you like.
