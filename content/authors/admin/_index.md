@@ -30,8 +30,7 @@ education:
   - course: Bachelors of Arts in Anthropology
     institution: the University of Texas at Arlington
     year: 2016
-  - course: Masters of Science in Computer Science Candidate
-  (Expected graduation May 2021)
+  - course: Masters of Science in Computer Science Candidate (Expected graduation May 2021)
     institution: the University of Texas at Arlington
 
 # Social/Academic Networking
