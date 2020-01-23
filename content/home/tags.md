@@ -12,6 +12,9 @@ subtitle = ""
   # Choose the taxonomy from `config.toml` to display (e.g. tags, categories)
   taxonomy = "tags"
   
+  [feature]
+    tag1
+  
   # Choose how many tags you would like to display (0 = all tags)
   count = 20
 
