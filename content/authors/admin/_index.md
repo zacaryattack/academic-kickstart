@@ -30,6 +30,9 @@ education:
   - course: Bachelors of Arts in Anthropology
     institution: the University of Texas at Arlington
     year: 2016
+  - course: Bachelors of fArts in Anthropology
+    institution: the University of Texas at Arlington
+    year: 2016
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/page-builder/#icons
