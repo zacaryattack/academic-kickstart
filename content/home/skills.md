@@ -26,4 +26,10 @@ subtitle = ""
  [[feature]]
   name = "SQL"
 
+[[feature]]
+  name = "html"
+
+[[feature]]
+  name = "CLISP"
+
 +++
