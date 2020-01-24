@@ -21,11 +21,71 @@ date_format = ""
 [[item]]
   organization = ""#"DataCamp"
   organization_url = ""#"https://www.datacamp.com"
-  title = "Object-Oriented Programming in R: S3 and R6 Course"
+  title = "Computer Networks"
   url = ""
   certificate_url = ""#"https://www.datacamp.com"
-  date_start = "2017-07-01"
+  date_start = "2019"
   date_end = ""#"2017-12-21"
+  description = ""
+
+[[item]]
+  organization = ""
+  organization_url = ""
+  title = "Design & Analysis of Algorithms"
+  url = ""
+  certificate_url = ""
+  date_start = "2000"
+  date_end = ""
+  description = ""
+ 
+[[item]]
+  organization = ""
+  organization_url = ""
+  title = "Data Analysis & Modeling Techniques"
+  url = ""
+  certificate_url = ""
+  date_start = "2000"
+  date_end = ""
+  description = ""
+
+[[item]]
+  organization = ""
+  organization_url = ""
+  title = "Database Systems"
+  url = ""
+  certificate_url = ""
+  date_start = "2000"
+  date_end = ""
+  description = ""
+
+[[item]]
+  organization = ""
+  organization_url = ""
+  title = "Data Mining"
+  url = ""
+  certificate_url = ""
+  date_start = "2000"
+  date_end = ""
+  description = ""
+
+[[item]]
+  organization = ""
+  organization_url = ""
+  title = "Neural Networks"
+  url = ""
+  certificate_url = ""
+  date_start = "2000"
+  date_end = ""
+  description = ""
+
+[[item]]
+  organization = ""
+  organization_url = ""
+  title = "Artifical Intelligence"
+  url = ""
+  certificate_url = ""
+  date_start = "2000"
+  date_end = ""
   description = ""
 
 +++
