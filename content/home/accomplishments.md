@@ -24,9 +24,18 @@ date_format = ""
   title = "Computer Networks"
   url = ""
   certificate_url = ""
-  date_start = "2018-10-01"
+  date_start = "2000-01-01"
   date_end = ""
   description = ""
 
+[[item]]
+  organization = ""
+  organization_url = ""
+  title = "Design & Analysis of Algorithms"
+  url = ""
+  certificate_url = ""
+  date_start = "2000-01-01"
+  date_end = ""
+  description = ""
 
 +++
