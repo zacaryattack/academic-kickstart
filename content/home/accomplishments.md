@@ -38,4 +38,54 @@ date_format = ""
   date_end = ""
   description = ""
 
+[[item]]
+  organization = ""
+  organization_url = ""
+  title = "Data Analysis & Modeling Techniques"
+  url = ""
+  certificate_url = ""
+  date_start = "2000-01-01"
+  date_end = ""
+  description = ""
+
+[[item]]
+  organization = ""
+  organization_url = ""
+  title = "Database Systems"
+  url = ""
+  certificate_url = ""
+  date_start = "2000-01-01"
+  date_end = ""
+  description = ""
+
+[[item]]
+  organization = ""
+  organization_url = ""
+  title = "Data Mining"
+  url = ""
+  certificate_url = ""
+  date_start = "2000-01-01"
+  date_end = ""
+  description = ""
+
+[[item]]
+  organization = ""
+  organization_url = ""
+  title = "Neural Networks"
+  url = ""
+  certificate_url = ""
+  date_start = "2000-01-01"
+  date_end = ""
+  description = ""
+
+[[item]]
+  organization = ""
+  organization_url = ""
+  title = "Artificial Intelligence I"
+  url = ""
+  certificate_url = ""
+  date_start = "2000-01-01"
+  date_end = ""
+  description = ""
+
 +++
