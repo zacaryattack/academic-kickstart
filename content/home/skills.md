@@ -27,7 +27,7 @@ subtitle = ""
   name = "SQL"
 
 [[feature]]
-  name = "html"
+  name = "MIPS"
 
 [[feature]]
   name = "CLISP"
