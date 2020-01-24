@@ -5,7 +5,7 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 50  # Order that this section will appear.
 
-title = "Relevant Coursework"
+title = "RelevantCoursework"
 subtitle = ""
 
 # Date format
@@ -17,26 +17,6 @@ date_format = ""
 #   `title`, `organization` and `date_start` are the required parameters.
 #   Leave other parameters empty if not required.
 #   Begin/end multi-line descriptions with 3 quotes `"""`.
-
-[[item]]
-  organization = ""#"Coursera"
-  organization_url = ""#"https://www.coursera.org"
-  title = "Computer Networks"
-  url = ""
-  certificate_url = ""#"https://www.coursera.org"
-  date_start = ""#"2018-10-01"
-  date_end = ""
-  description = ""
-
-[[item]]
-  organization = ""#"edX"
-  organization_url = ""#"https://www.edx.org"
-  title = "Design & Analysis of Algorithms"
-  url = ""#"https://www.edx.org/professional-certificate/uc-berkeleyx-blockchain-fundamentals"
-  certificate_url = ""#"https://www.edx.org"
-  date_start = ""#"2018-03-01"
-  date_end = ""
-  description = ""#"Formulated informed blockchain models, hypotheses, and use cases."
   
 [[item]]
   organization = "DataCamp"
