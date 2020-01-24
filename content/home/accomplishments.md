@@ -5,7 +5,7 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 50  # Order that this section will appear.
 
-title = "Relevant;Coursework"
+title = "Relevant Coursework"
 subtitle = ""
 
 # Date format
@@ -29,14 +29,14 @@ date_format = ""
   description = ""
 
 [[item]]
-  organization = "edX"
-  organization_url = "https://www.edx.org"
-  title = "Blockchain Fundamentals"
-  url = "https://www.edx.org/professional-certificate/uc-berkeleyx-blockchain-fundamentals"
-  certificate_url = "https://www.edx.org"
-  date_start = "2018-03-01"
+  organization = ""#"edX"
+  organization_url = ""#"https://www.edx.org"
+  title = "Design & Analysis of Algorithms"
+  url = ""#"https://www.edx.org/professional-certificate/uc-berkeleyx-blockchain-fundamentals"
+  certificate_url = ""#"https://www.edx.org"
+  date_start = ""#"2018-03-01"
   date_end = ""
-  description = "Formulated informed blockchain models, hypotheses, and use cases."
+  description = ""#"Formulated informed blockchain models, hypotheses, and use cases."
   
 [[item]]
   organization = "DataCamp"
