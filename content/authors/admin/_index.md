@@ -21,9 +21,9 @@ organizations:
 bio: My research interests include automated services, cloud computing, and neural networks.
 
 interests:
-- Artificial Intelligence
-- Data Modeling
 - Linguistics
+- Data Modeling
+- Artificial Intelligence
 
 education:
   courses:
