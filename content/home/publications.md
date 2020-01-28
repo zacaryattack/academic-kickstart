@@ -7,7 +7,7 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 90  # Order that this section will appear.
 
-title = "Recent Publications"
+title = "Blogs"
 subtitle = ""
 
 [content]
@@ -67,9 +67,9 @@ subtitle = ""
 +++
 
 {{% alert note %}}
-Quickly discover relevant content by [filtering publications]({{< ref "/publication/_index.md" >}}).
+This would be the look of the first blog. Let us try to get an idea of how this would look and feel given a large amount of text to display. Is it messy looking? Does the informational i icon take away from the pull of the blog section? If so, what measures can be taken to achieve a more professional appealing form for the area of your website that explains the projects that you are engaged in?
 {{% /alert %}}
 
 {{% alert note %}}
-Quickly discover relevant bink bonk content by [filtering publications]({{< ref "/publication/_index.md" >}}).
+This would be the look of the first blog. Let us try to get an idea of how this would look and feel given a large amount of text to display. Is it messy looking? Does the informational i icon take away from the pull of the blog section? If so, what measures can be taken to achieve a more professional appealing form for the area of your website that explains the projects that you are engaged in?
 {{% /alert %}}
