@@ -66,14 +66,14 @@ subtitle = ""
  css_class = ""
 +++
 
-{{% alert note %}}
-Project Title Here: A lengthy explanation of the topic at hand.
+#{{% alert note %}}
+#Project Title Here: A lengthy explanation of the topic at hand.
 
-by Zacary Cotton
+#by Zacary Cotton
 
-This would be the look of the first blog. Let us try to get an idea of how this would look and feel given a large amount of text to display. Is it messy looking? Does the informational i icon take away from the pull of the blog section? If so, what measures can be taken to achieve a more professional appealing form for the area of your website that explains the projects that you are engaged in?
-{{% /alert %}}
+#This would be the look of the first blog. Let us try to get an idea of how this would look and feel given a large amount of #text to display. Is it messy looking? Does the informational i icon take away from the pull of the blog section? If so, what #measures can be taken to achieve a more professional appealing form for the area of your website that explains the projects #that you are engaged in?
+#{{% /alert %}}
 
-{{% alert note %}}
-This would be the look of the first blog. Let us try to get an idea of how this would look and feel given a large amount of text to display. Is it messy looking? Does the informational i icon take away from the pull of the blog section? If so, what measures can be taken to achieve a more professional appealing form for the area of your website that explains the projects that you are engaged in?
-{{% /alert %}}
+#{{% alert note %}}
+#This would be the look of the first blog. Let us try to get an idea of how this would look and feel given a large amount of #text to display. Is it messy looking? Does the informational i icon take away from the pull of the blog section? If so, what #measures can be taken to achieve a more professional appealing form for the area of your website that explains the projects #that you are engaged in?
+#{{% /alert %}}
