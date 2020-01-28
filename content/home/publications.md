@@ -66,7 +66,8 @@ subtitle = ""
  css_class = ""
 +++
 
-#{{% alert note %}}This area was intentionally left blank.{{% /alert %}}
+#{{% alert note %}}
+This area was intentionally left blank.
 
 
 
