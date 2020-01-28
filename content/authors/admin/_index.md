@@ -61,6 +61,6 @@ user_groups:
 - Visitors
 ---
 
-Zacary Cotton is a student of artificial intelligence at the University of Texas at Arlington. His research interests include automated services, cloud computing, and neural networks.
+Zacary Cotton is a student of artificial intelligence currently attending classes at the University of Texas at Arlington. His research interests include automated services, cloud computing, and neural networks.
 
 "Adaptable professional with proven leadership, research, and teamwork skills. Aiming to leverage my abilities to successfully manage a role at your company. Frequently praised as detail-oriented by my peers, I can be relied upon to help your company achieve its goals." - Zacary Cotton
