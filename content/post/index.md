@@ -10,6 +10,3 @@ date: 1919-09-01
 print('testing')
 ```
 
-```python
-
-```
