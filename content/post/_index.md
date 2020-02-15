@@ -1,5 +1,6 @@
 ---
-title: Posts
+title: My post's title
+date: 2019-09-01
 
 # View.
 #   1 = List
@@ -14,4 +15,7 @@ header:
 ---
 
 
+# Put any other Academic metadata here...
+
 print("Welcome!")
+
