@@ -8,7 +8,7 @@ active = true  # Activate this widget? true/false
 weight = 60  # Order that this section will appear.
 
 title = "Jupyter Posts"
-subtitle = ""
+subtitle = "https://github.com/zacaryattack/NLP-Tutorial/blob/master/main.ipynb"
 
 #url = "img/ranking.jpg"
 
