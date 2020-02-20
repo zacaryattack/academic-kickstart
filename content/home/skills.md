@@ -14,6 +14,12 @@ subtitle = ""
 # 
 # For available icons, see: https://sourcethemes.com/academic/docs/widgets/#icons
 
+[design.background]
+  # Background image.
+   image = "languages.jpg"  # Name of image in `static/img/`.
+
+
+
 [[feature]]
   name = "Python"
   
