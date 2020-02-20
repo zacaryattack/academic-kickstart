@@ -7,7 +7,7 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 60  # Order that this section will appear.
 
-title = "Practice Classifier - Jupyter Notebook"
+title = "Classifier in Jupyter"
 subtitle = "https://github.com/zacaryattack/NLP-Tutorial/blob/master/main.ipynb"
 
 #url = "img/ranking.jpg"
