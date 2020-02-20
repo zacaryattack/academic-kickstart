@@ -14,7 +14,7 @@ role: Student of Artificial Intelligence
 
 # Organizations/Affiliations
 organizations:
-- name: the University of Texas at Arlington
+- name: at the University of Texas at Arlington
   url: ""
 
 # Short bio (displayed in user profile at end of posts)
