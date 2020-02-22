@@ -22,7 +22,7 @@ subtitle = ""
   # gradient_end = "SkyBlue"
   
   # Background image.
-   image = "email.jpg"
+   #image = "email.jpg"
 
 # Automatically link email and phone?
 autolink = true
