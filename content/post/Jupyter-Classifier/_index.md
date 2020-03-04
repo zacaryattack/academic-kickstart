@@ -1,5 +1,5 @@
 ---
-title: My posst's title
+title: My post's title, jc folder index.md
 date: 2019-09-01
 
 # Put any other Academic metadata here...
