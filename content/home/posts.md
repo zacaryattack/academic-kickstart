@@ -10,7 +10,7 @@ weight = 60  # Order that this section will appear.
 title = "Classifier in Jupyter"
 subtitle = "https://github.com/zacaryattack/NLP-Tutorial/blob/master/main.ipynb"
 
-#url = "img/ranking.jpg"
+url = "/post"
 
 [content]
   # Page type to display. E.g. post, talk, or publication.
