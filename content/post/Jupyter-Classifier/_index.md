@@ -3,10 +3,7 @@ title: Practice Classifier in Jupyter
 date: 2020-03-03
 
 # Put any other Academic metadata here...
-gallery_item:
- - album: gallery
-   image: "ranking.jpg"
-   caption: A caption
+
 ---
 
 
@@ -151,5 +148,4 @@ print(sample_submission)
 Please view the .77096 score and place 2714 I received for my code in the picture below.
 ```
 
-{{< figure library="true" src="ranking1.jpg" title="A caption" lightbox="true" >}}
-{{< gallery >}}
+{{< figure library="true" src="ranking.jpg" title="A caption" lightbox="true" >}}
