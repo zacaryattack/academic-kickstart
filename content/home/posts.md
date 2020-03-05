@@ -10,14 +10,12 @@ weight = 60  # Order that this section will appear.
 title = "Classifier in Jupyter"
 subtitle = "https://github.com/zacaryattack/NLP-Tutorial/blob/master/main.ipynb"
 
-[[main]]
-  name = "Posts"
-  url="post/"
-  weight = 20
 
 [content]
   # Page type to display. E.g. post, talk, or publication.
   page_type = "post"
+  
+  url="post/"
   
   # Choose how much pages you would like to display (0 = all pages)
   count = 0
