@@ -147,3 +147,7 @@ print(sample_submission)
 
 ```
 
+gallery_item:
+ - album: gallery
+   image: "ranking.jpg"
+   caption: A caption
