@@ -148,7 +148,7 @@ print(sample_submission)
 
 
 ```python
-
+Please view the .77096 score and place 2714 I received for my code in the picture below.
 ```
 
 {{< gallery >}}
