@@ -8,15 +8,13 @@ active = true  # Activate this widget? true/false
 weight = 60  # Order that this section will appear.
 
 title = "Classifier in Jupyter"
-subtitle = "https://github.com/zacaryattack/NLP-Tutorial/blob/master/main.ipynb"
+#subtitle = "https://github.com/zacaryattack/NLP-Tutorial/blob/master/main.ipynb"
 
 
 [content]
   # Page type to display. E.g. post, talk, or publication.
   page_type = "post"
-  
-  url="post/"
-  
+    
   # Choose how much pages you would like to display (0 = all pages)
   count = 0
   
@@ -55,7 +53,7 @@ subtitle = "https://github.com/zacaryattack/NLP-Tutorial/blob/master/main.ipynb"
   # gradient_end = "SkyBlue"
   
   # Background image.
-   image = "ranking.jpg"  # Name of image in `static/img/`.
+   #image = "ranking.jpg"  # Name of image in `static/img/`.
   # image_darken = 0.6  # Darken the image? Range 0-1 where 0 is transparent and 1 is opaque.
 
   # Text color (true=light or false=dark).
