@@ -1,6 +1,6 @@
 ---
-title: My post's title, jc folder index.md
-date: 2019-09-01
+title: Practice Classifier in Jupyter
+date: 2020-03-03
 
 # Put any other Academic metadata here...
 ---
