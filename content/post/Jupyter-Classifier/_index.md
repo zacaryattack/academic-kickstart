@@ -147,5 +147,5 @@ print(sample_submission)
 ```python
 Please view the .77096 score and place 2714 I received for my code in the picture below.
 ```
-
-{{< figure library="true" src="ranking.jpg" title="A caption" lightbox="true" >}}
+{{< figure library="true" src="sub.jpg" title="My Code Submission" lightbox="true" >}}
+{{< figure library="true" src="ranking.jpg" title="Received Ranking & Score" lightbox="true" >}}
