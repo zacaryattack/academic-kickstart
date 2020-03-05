@@ -46,7 +46,7 @@ title = "Blog Posts"
   #   Any HTML color name or Hex value is valid.
   
   # Background color.
-   color = "gray"
+   #color = "gray"
   
   # Background gradient.
   # gradient_start = "DeepSkyBlue"
