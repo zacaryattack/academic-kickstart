@@ -27,6 +27,7 @@ from sklearn.linear_model import Ridge
 
 
 
+# Uses the uniform distribution between 0 and 1 for generating X values
 def Generate_Xs(count):
     
     Xs = []
@@ -40,10 +41,12 @@ def Generate_Xs(count):
 
 
 
+# Generates Y values using y = sin(2*pi*X) + N
 def Generate_Ys(Xs):
     
     Y = []
     for x in Xs:
+        # Samples N from the normal gaussian distribution
         N = random.gauss(0, 1)
         y = math.sin(2*math.pi*x) + N
         Y.append(y)
@@ -54,6 +57,7 @@ def Generate_Ys(Xs):
 
 
 
+# A helper class for using matplotlib to draw graphs predictions vs ground truth
 class Figure_Prediction_vs_Truth:
     
     def __init__(self, subplot_row_count, x_plot, y_plot, x_train, y_train):
@@ -96,6 +100,7 @@ class Figure_Prediction_vs_Truth:
 
 
 
+# Uses root mean square error to find weights of polynomial regression
 def RMSE_toFind_Weights_ofRegression(chart_orders, x_plot, y_plot, x_train, y_train, x_test, y_test):
     
     weights = []; rmse_train = []; rmse_test = []
@@ -125,6 +130,7 @@ def RMSE_toFind_Weights_ofRegression(chart_orders, x_plot, y_plot, x_train, y_tr
 
 
 
+# Creates the coefficient table for viewing the weights and biases
 def Display_WeightsTable(print_orders, weights):
     
     p_str = ''
@@ -171,6 +177,7 @@ def Display_WeightsTable(print_orders, weights):
 
 
 
+# A helper function for using matplotlib to draw graphs for error
 def Draw_TrainError_vs_TestError(test_type, rms_train, rms_test):
     
     rms_train = [rms/max(rms_test) for rms in rms_train]
@@ -199,6 +206,7 @@ def Draw_TrainError_vs_TestError(test_type, rms_train, rms_test):
 
 
 
+# Regularizes using the sum of weights and sklearn's Ridge function
 def Regularize_Using_Sum_ofWeights(Lambdas, x_plot, y_plot, x_train, y_train, x_test, y_test):
     
     rmse_train = []; rmse_test = []
@@ -223,30 +231,33 @@ def Regularize_Using_Sum_ofWeights(Lambdas, x_plot, y_plot, x_train, y_train, x_
 
 
 
-x_plot = Generate_Xs(100)
-y_plot = Generate_Ys(x_plot)
+# Generates 20 data pairs (X, Y) using y = sin(2*pi*X) + N
+# plus another 100 pairs used exclusively for plotting with matplotlib
+x_plot = Generate_Xs(100); y_plot = Generate_Ys(x_plot)
 
-x_train = Generate_Xs(10)
-y_train = Generate_Ys(x_train)
-
-x_test = Generate_Xs(10)
-y_test = Generate_Ys(x_test)
+# Uses 10 for train and 10 for test
+x_train = Generate_Xs(10); y_train = Generate_Ys(x_train)
+x_test = Generate_Xs(10); y_test = Generate_Ys(x_test)
 
 chart_orders = [0, 1, 3, 9]
+# Uses root mean square error to find weights of polynomial regression
 weights, rmse_train, rmse_test, Ninth_Order_Prediction = RMSE_toFind_Weights_ofRegression(chart_orders, x_plot, y_plot, x_train, y_train, x_test, y_test)
 
 print_orders = [0, 1, 6, 9]
 Display_WeightsTable(print_orders, weights)
 
+# Draws train error vs test error
 Draw_TrainError_vs_TestError('M', rmse_train, rmse_test)
 
-_100_More_Data_x = Generate_Xs(100)
-_100_More_Data_y = Generate_Ys(_100_More_Data_x)
+# Generates 100 more data and fits to the 9th order model and then draws the fit
+_100_More_Data_x = Generate_Xs(100); _100_More_Data_y = Generate_Ys(_100_More_Data_x)
 Figure_Prediction_vs_Truth(1, x_plot, y_plot, _100_More_Data_x, _100_More_Data_y).Add_Subplot('N = 100', Ninth_Order_Prediction)
 
 Lambdas = [0, 1, 10, 100, 1000, 10000]
+# Regularizes using the sum of weights
 rmse_train, rmse_test = Regularize_Using_Sum_ofWeights(Lambdas, x_plot, y_plot, x_train, y_train, x_test, y_test)
 
+# Draws test and train error according to lamda
 Draw_TrainError_vs_TestError('λ', rmse_train, rmse_test)
 
 plt.show()
