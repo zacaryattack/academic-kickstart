@@ -1,9 +1,9 @@
 ---
-title: The Concept of Overfitting Using Polynomial Regression
+title: Overfitting with Polynomial Regression
 date: 2020-13-03
 
 # Put any other Academic metadata here...
-#summary: "Please View My Practice Classifier Developed in Jupyter."
+summary: "Demonstrates The Concept of Overfitting Using Polynomial Regression."
 ---
 
 
