@@ -280,23 +280,27 @@ plt.show()
 
 
 
-#![png](output_0_1.png)
+{{< figure library="true" src="output_0_1.jpg" lightbox="true" >}}
 
 
 
-#![png](output_0_2.png)
+
+{{< figure library="true" src="output_0_2.jpg" lightbox="true" >}}
 
 
 
-#![png](output_0_3.png)
+
+{{< figure library="true" src="output_0_3.jpg" lightbox="true" >}}
 
 
 
-#![png](output_0_4.png)
+
+{{< figure library="true" src="output_0_4.jpg" lightbox="true" >}}
 
 
 
-#![png](output_0_5.png)
+
+{{< figure library="true" src="output_0_5.jpg" lightbox="true" >}}
 
 
 
