@@ -212,6 +212,7 @@ def Regularize_Using_Sum_ofWeights(Lambdas, x_plot, y_plot, x_train, y_train, x_
     rmse_train = []; rmse_test = []
     Lambda_Figure = Figure_Prediction_vs_Truth(3, x_plot, y_plot, x_train, y_train)
     for Lambda in Lambdas:
+        L = Lambda
         if Lambda > 0: Lambda = 1.0/Lambda
     
         model = make_pipeline(StandardScaler(), PolynomialFeatures(9), Ridge(alpha=Lambda, fit_intercept=True, solver='svd'))
@@ -221,7 +222,7 @@ def Regularize_Using_Sum_ofWeights(Lambdas, x_plot, y_plot, x_train, y_train, x_
         rmse_train.append(math.sqrt(mean_squared_error(y_train, y_pred)))
     
         y_pred = model.predict(x_plot[:, np.newaxis])
-        Lambda_Figure.Add_Subplot('λ = ' + str(Lambda), y_pred)
+        Lambda_Figure.Add_Subplot('λ = ' + str(L), y_pred)
     
         y_pred = model.predict(x_test[:, np.newaxis])
         rmse_test.append(math.sqrt(mean_squared_error(y_test, y_pred)))
@@ -262,20 +263,40 @@ Draw_TrainError_vs_TestError('λ', rmse_train, rmse_test)
 
 plt.show()
 
+p_str = '\n'
+p_str += '     When M is order 3, the model consistently produces a function that\n'
+p_str += 'closely follows the inner, more general shape of the data\'s true form,\n'
+p_str += 'while when M is order 9, it models the Train Data perfectly, thus over-\n'
+p_str += 'fitting is achieved.\n'
+p_str += '\n'
+p_str += '     When λ is 0 the model behaves very much like an ordinary regression\n'
+p_str += 'with order 9, but when λ is from 1 to 100, it often produces more general\n'
+p_str += 'shapes of the data\'s true form, λ at 10 appears to often fit the best,\n'
+p_str += 'but sometimes 1 fits better. However, with λ above 100 it appears to begin\n'
+p_str += 'to perfectly fit the Train Data yet again.\n'
+p_str += '\n'
+p_str += '     Based on the best test performance for M only, a model with M = 5 or 6\n'
+p_str += 'often produces the best results as M = 9 overfits. Based on the best test\n'
+p_str += 'performance for when M = 9 and λ varies, when λ = 10, it often produces the\n'
+p_str += 'better fit however, when λ = 100 it also often appears to best match the data\'s\n'
+p_str += 'true form.\n\n\n'
+
+print(p_str)
+
 ```
 
             M = 0     M = 1     M = 6     M = 9
     -----------------------------------------------
-    w0|    -0.513     0.487    -0.273    16.055
-    w1|              -1.225    -5.705   -130.337
-    w2|                        -6.693   -117.341
-    w3|                         3.515   882.401
-    w4|                         7.326   316.921
-    w5|                        -0.397   -1531.012
-    w6|                        -1.808   -223.833
-    w7|                                 962.739
-    w8|                                  44.121
-    w9|                                 -200.760
+    w0|     0.013     1.013     0.719   7189.746
+    w1|              -0.604     6.928   141814.38
+    w2|                        -1.342   -429087.1
+    w3|                       -59.989   -2728981
+    w4|                       -51.976   5907832.3
+    w5|                         8.740   14328446
+    w6|                        11.659   -18756249
+    w7|                                 -27228921
+    w8|                                 1902265.4
+    w9|                                 5575594.7
     
 
 
@@ -284,9 +305,7 @@ plt.show()
 
 
 
-
 {{< figure library="true" src="output_0_2.jpg" lightbox="true" >}}
-
 
 
 
@@ -294,13 +313,33 @@ plt.show()
 
 
 
-
 {{< figure library="true" src="output_0_4.jpg" lightbox="true" >}}
 
 
 
-
 {{< figure library="true" src="output_0_5.jpg" lightbox="true" >}}
+
+
+
+         When M is order 3, the model consistently produces a function that
+    closely follows the inner, more general shape of the data's true form,
+    while when M is order 9, it models the Train Data perfectly, thus over-
+    fitting is achieved.
+    
+         When λ is 0 the model behaves very much like an ordinary regression
+    with order 9, but when λ is from 1 to 100, it often produces more general
+    shapes of the data's true form, λ at 10 appears to often fit the best,
+    but sometimes 1 fits better. However, with λ above 100 it appears to begin
+    to perfectly fit the Train Data yet again.
+    
+         Based on the best test performance for M only, a model with M = 5 or 6
+    often produces the best results as M = 9 overfits. Based on the best test
+    performance for when M = 9 and λ varies, when λ = 10, it often produces the
+    better fit however, when λ = 100 it also often appears to best match the data's
+    true form.
+    
+    
+    
 
 
 
