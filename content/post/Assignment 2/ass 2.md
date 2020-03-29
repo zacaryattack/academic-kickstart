@@ -8,6 +8,13 @@ summary: "The goal of this assignment is to learn about kNN."
 
 
 ```python
+#
+# Zacary Cotton
+# 100 103 1997
+# CSE 5334 - Data Mining
+# Assignment 2
+#
+
 from sys import path, exit
 
 import scipy
@@ -21,22 +28,22 @@ import sklearn.model_selection
 
 def Get_Iris_Development_andTest_Data(iris_data_path, test_percentage=0.5):
     
+    # first thing, read the csv with the iris data
     iris_data_df = pd.read_csv(iris_data_path)
+    
+    # add colume names to give data meaning
     iris_data_df.columns = ['sepal length in cm', 'sepal width in cm', 'petal length in cm', 'petal width in cm', 'class']
-    
-    #print(iris_data_df)
-    
+        
     # shuffles the dataframe & resets the its index
     iris_data_df = iris_data_df.sample(frac=1).reset_index(drop=True)
-    #print(iris_data_df)
     
+    # change all flower string names to enumerated values
     flower_names = list(set(iris_data_df.iloc[:, -1]))
     for id, name in enumerate(flower_names): iris_data_df['class'] = iris_data_df['class'].str.replace(name, str(id))
     iris_data_df['class'] = pd.to_numeric(iris_data_df['class'])
     
     # shuffles the dataframe & resets the its index
     iris_data_df = iris_data_df.sample(frac=1).reset_index(drop=True)
-    
     development, test = sklearn.model_selection.train_test_split(iris_data_df, test_size=test_percentage)
     
     # shuffles the dataframe & resets the its index
@@ -47,9 +54,7 @@ def Get_Iris_Development_andTest_Data(iris_data_path, test_percentage=0.5):
     
     development = development.values
     test = test.values
-    
-    #print(development)
-    
+        
     return development, test
 
 
@@ -59,21 +64,25 @@ class kNN_Classifier:
     
     def __init__(self):
         
+        # the learned data
         self.labled_records = None
         self.optimal_hyperparameters = None
         
+        # helper function
         def Get_Record(Record_Matrix, record_number):
             row = Record_Matrix[record_number, :]
             record = row.reshape(1, row.shape[0])
             return record
         self.Get_Record = Get_Record
 
+        # helper function
         def Split_Record_fromClass(record):
             records_class = record[0][-1]
             record = record[:, :-1]
             return record, records_class
         self.Split_Record_fromClass = Split_Record_fromClass
         
+        # helper function
         def Get_Configs():
             distance_metrics = ['Euclidean Distance', 'Normalized Euclidean Distance', 'Cosine Similarity']
             k_values = [1, 3, 5, 7]
@@ -92,9 +101,11 @@ class kNN_Classifier:
     
     def Calculate_Distance(self, distance_metric, record1, record2):
     
+        # calculates Euclidean Distance
         if distance_metric.lower() == 'Euclidean Distance'.lower():
             measure = scipy.spatial.distance.euclidean(record1, record2)
             
+        # calculates Normalized Euclidean Distance
         elif distance_metric.lower() == 'Normalized Euclidean Distance'.lower():
             record1_average = np.average(record1)
             record2_average = np.average(record2)
@@ -102,6 +113,7 @@ class kNN_Classifier:
             denominator = (2*(((np.linalg.norm(record1 - record1_average))**2) + ((np.linalg.norm(record2 - record2_average))**2)))
             measure = numerator / denominator
         
+        # Cosine Similarity
         elif distance_metric.lower() == 'Cosine Similarity'.lower():
             measure = scipy.spatial.distance.cosine(record1, record2)
     
@@ -113,11 +125,16 @@ class kNN_Classifier:
         
         distances = []
         for i in range(self.labled_records.shape[0]):
+            # gets record with class label
             labled_record_i = self.Get_Record(self.labled_records, i)
                
+            # strips class label for record comparison
             record_i = self.Split_Record_fromClass(labled_record_i)[0]
+            
+            # actual record comparison
             distance = self.Calculate_Distance(distance_metric, record_i, unknown_record)
             
+            # measure recorded 
             distances.append((distance, labled_record_i))
                 
         return distances
@@ -126,11 +143,11 @@ class kNN_Classifier:
 
     def Identify_kNNs(self, k, distances):
     
-        distances.sort(key = lambda x: x[0])
-        
-        #print(distances)
-        
+        # selects the kNNs
+        distances.sort(key = lambda x: x[0])        
         NNs = distances[:k]
+        
+        # strips the no longer needed distance value
         for index, nn in enumerate(NNs): NNs[index] = nn[1][0][:]
     
         return NNs
@@ -139,12 +156,15 @@ class kNN_Classifier:
 
     def Determine_ClassLabel_ofUnknownRecord(self, kNNs):
     
+        # puts together a vote counting mechanism
         votes = {}
         for knn in kNNs:
             if knn[-1] not in votes.keys(): votes[knn[-1]] = 1
             else: votes[knn[-1]] += 1
-                
+        
         votes = [(vote, votes[vote]) for vote in votes]
+        
+        # selects majority vote
         majority_vote = max(votes, key=lambda x: x[1])[0]
         
         return majority_vote
@@ -153,8 +173,15 @@ class kNN_Classifier:
     
     def Classify_UnknownRecord(self, distance_metric, k, unknown_record):
         
+        # follows the algorithm described in class
+        
+        # 1st calculate distances
         distances = self.Compute_Distances_toOtherRecords(distance_metric, unknown_record)
-        kNNs = self.Identify_kNNs(k, distances)        
+        
+        # 2nd identify kNNs
+        kNNs = self.Identify_kNNs(k, distances)     
+        
+        # 3rd determine class label
         classified_label = self.Determine_ClassLabel_ofUnknownRecord(kNNs)
     
         return classified_label
@@ -168,11 +195,14 @@ class kNN_Classifier:
         distance_metric, k = config; correct_count = 0
         for i in range(test_records.shape[0]):
             
+            # creates an unknown record from a known record
             test_record_i = self.Get_Record(test_records, i)
             unknown_record, actual_class_label = self.Split_Record_fromClass(test_record_i)
             
+            # makes classification
             classified_label = self.Classify_UnknownRecord(distance_metric, k, unknown_record)
-
+            
+            # adjusts score
             if classified_label == actual_class_label: correct_count += 1
         
         score = correct_count / test_records.shape[0]
@@ -182,23 +212,22 @@ class kNN_Classifier:
     
     
     def Train(self, labled_records):
+        
+        # saves a copy of the labled records
         self.labled_records = labled_records.copy()
     
+        # tests different configurations
         configs = self.Get_Configs()
         results = [(self.Score_Config(config), config) for config in configs]
         self.ShowAccuracy(results)
     
+        # hyperparameters tuning
         results.sort(key=lambda x: x[0], reverse=True)
-        #print('\nresults:\n', results)
-        #print('\nresults count: ', len(results))
-        #print('\n record count: ', self.labled_records.shape[0])
         optimal_hyperparameters = results.pop(0)[1]
         while optimal_hyperparameters[1] == 1: optimal_hyperparameters = results.pop(0)[1]
     
         self.optimal_hyperparameters = optimal_hyperparameters
-        
-        #print('\nself.optimal_hyperparameters: ', self.optimal_hyperparameters)
-        
+                
         return
 
     
@@ -208,33 +237,34 @@ class kNN_Classifier:
         if isinstance(results, list) == False:
             test_records = results
             results = [(self.Score_Config(self.optimal_hyperparameters, test_records), self.optimal_hyperparameters)]
-    
-        #print(results)
-    
+        
         bins = {}
         for result in results:
             k = result[1][1]
             if k not in bins: bins[k] = [result]
             else: bins[k].append(result)
     
+        # for each k value it displays a bar graph
         k_values = list(bins.keys())
         for k in k_values:
         
             figure = plt.figure(num=None, figsize=(6, 4), dpi=80, facecolor='w', edgecolor='k').add_subplot()        
             figure.set_xlabel('k = ' + str(k))
         
-            dms = []
+            dms = [] # creates the bar
             for element in bins[k]:
                 score = element[0]
                 dm = element[1][0]
                 dms.append(dm)
                 plt.bar(dm, score)
         
+            # when performing training accuracy
             if len(k_values) > 1:
                 figure.set_xticklabels(dms, rotation=10)     
                 figure.set_title('Holding k fixed at: ' + str(k))
                 figure.set_ylabel('Accuracy')
         
+            # when performing final accuracy
             if len(k_values) == 1:
                 figure.set_title('Optimal Hyperparameters: ' + dms[0] + ', k = ' + str(k))
                 figure.set_ylabel('Final Accuracy')
@@ -256,6 +286,23 @@ plt.show()
 ```
 
 
+{{< figure library="true" src="a2_output_0_0.jpg" lightbox="true" >}}
+
+
+
+{{< figure library="true" src="a2_output_0_1.jpg" lightbox="true" >}}
+
+
+
+{{< figure library="true" src="a2_output_0_2.jpg" lightbox="true" >}}
+
+
+
+{{< figure library="true" src="a2_output_0_3.jpg" lightbox="true" >}}
+
+
+
+{{< figure library="true" src="a2_output_0_4.jpg" lightbox="true" >}}
 
 
 
