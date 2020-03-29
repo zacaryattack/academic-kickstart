@@ -1,9 +1,9 @@
 ---
-title: Overfitting with Polynomial Regression
-date: 2020-13-03
+title: Ovssion
+date: 2020-13-04
 
 # Put any other Academic metadata here...
-summary: "Demonstrates The Concept of Overfitting Using Polynomial Regression."
+summary: "Demonstraomial Regression."
 ---
 
 
