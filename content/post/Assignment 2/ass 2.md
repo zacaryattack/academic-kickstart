@@ -17,11 +17,11 @@ summary: "The goal of this assignment is to learn about kNN."
 
 from sys import path, exit
 
-import scipy
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import sklearn.model_selection
+import scipy # to calculate spatial distances, e.g. euclidean
+import numpy as np # to represent vectors
+import pandas as pd # to load the initial csv
+import sklearn.model_selection # to help split the data
+import matplotlib.pyplot as plt # to display results
 
 
 
