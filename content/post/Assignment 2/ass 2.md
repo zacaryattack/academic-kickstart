@@ -1,9 +1,9 @@
 ---
-title: Ovssion
-date: 2020-13-04
+title: Assignment 2
+date: 2020-02-04
 
 # Put any other Academic metadata here...
-summary: "Demonstraomial Regression."
+summary: "The goal of this assignment is to learn about kNN."
 ---
 
 
