@@ -224,7 +224,7 @@ class kNN_Classifier:
         # hyperparameters tuning
         results.sort(key=lambda x: x[0], reverse=True)
         optimal_hyperparameters = results.pop(0)[1]
-        while optimal_hyperparameters[1] == 1: optimal_hyperparameters = results.pop(0)[1]
+        #while optimal_hyperparameters[1] == 1: optimal_hyperparameters = results.pop(0)[1]
     
         self.optimal_hyperparameters = optimal_hyperparameters
                 
