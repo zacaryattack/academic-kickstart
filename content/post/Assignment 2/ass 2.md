@@ -3,7 +3,7 @@ title: Assignment 2
 date: 2020-02-04
 
 # Put any other Academic metadata here...
-summary: "The goal of this assignment is to learn about kNN."
+summary: "The goal of this assignment is to learn about kNN on the IRIS dataset."
 ---
 
 
@@ -21,8 +21,11 @@ import numpy as np # to utilize array structures
 import sklearn.model_selection # to help split the data
 import matplotlib.pyplot as plt # to display results
 
+```
 
+testing 1 2 3
 
+```python
 
 def Get_Iris_Development_andTest_Data(iris_data_path, test_percentage=0.25):
     
