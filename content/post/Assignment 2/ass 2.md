@@ -18,16 +18,14 @@ summary: "The goal of this assignment is to learn about kNN on the IRIS dataset.
 from sys import path # to locate the csv
 import pandas as pd # to load the csv
 import numpy as np # to utilize array structures
-import sklearn.model_selection # to help split the data
 import matplotlib.pyplot as plt # to display results
 
 ```
 
-testing 1 2 3
 
+The first necessary function would be that which retrieves the data
 ```python
-
-def Get_Iris_Development_andTest_Data(iris_data_path, test_percentage=0.25):
+def Get_Iris_Development_andTest_Data(iris_data_path, development_percentage=0.75):
     
     # first thing, read the csv with the iris data
     iris_data_df = pd.read_csv(iris_data_path)
@@ -45,7 +43,10 @@ def Get_Iris_Development_andTest_Data(iris_data_path, test_percentage=0.25):
     
     # shuffles the dataframe & resets the its index
     iris_data_df = iris_data_df.sample(frac=1).reset_index(drop=True)
-    development, test = sklearn.model_selection.train_test_split(iris_data_df, test_size=test_percentage)
+        
+    cap = int(iris_data_df.shape[0] * development_percentage)
+    development = iris_data_df[:cap]
+    test = iris_data_df[cap:]
     
     # shuffles the dataframe & resets the its index
     development = development.sample(frac=1).reset_index(drop=True)
@@ -164,8 +165,7 @@ class kNN_Classifier:
     def Identify_kNNs(self, k, distances):
     
         # selects the kNNs
-        distances.sort(key = lambda x: x[0])        
-        NNs = distances[:k]
+        distances.sort(key = lambda x: x[0]); NNs = distances[:k]
         
         # strips the no longer needed distance value
         for index, nn in enumerate(NNs): NNs[index] = nn[1][0][:]
@@ -181,7 +181,6 @@ class kNN_Classifier:
         for knn in kNNs:
             if knn[-1] not in votes.keys(): votes[knn[-1]] = 1
             else: votes[knn[-1]] += 1
-        
         votes = [(vote, votes[vote]) for vote in votes]
         
         # selects majority vote
@@ -220,6 +219,7 @@ class kNN_Classifier:
             # creates an unknown record from a known record
             test_record_i = self.Get_Record(test_records, i)
             
+            # creates a test_records that does not contain the searched record
             if i == 0: test_records = test_records[1:]
             elif i == cap-1: test_records = test_records[:-1]
             else: test_records = np.delete(test_records, [i], axis=0)
@@ -252,7 +252,7 @@ class kNN_Classifier:
         # hyperparameters tuning
         results.sort(key=lambda x: x[0], reverse=True)
         optimal_hyperparameters = results.pop(0)[1]
-        #while optimal_hyperparameters[1] == 1: optimal_hyperparameters = results.pop(0)[1]
+        while optimal_hyperparameters[1] == 1: optimal_hyperparameters = results.pop(0)[1]
     
         self.optimal_hyperparameters = optimal_hyperparameters
                 
