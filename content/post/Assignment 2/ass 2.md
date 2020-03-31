@@ -15,15 +15,16 @@ summary: "The goal of this assignment is to learn about kNN."
 # Assignment 2
 #
 
-import numpy as np # for array structures
+from sys import path # to help retrieve the csv
 import pandas as pd # to load the initial csv
+import numpy as np # to utilize array structures
 import sklearn.model_selection # to help split the data
 import matplotlib.pyplot as plt # to display results
 
 
 
 
-def Get_Iris_Development_andTest_Data(iris_data_path, test_percentage=0.5):
+def Get_Iris_Development_andTest_Data(iris_data_path, test_percentage=0.25):
     
     # first thing, read the csv with the iris data
     iris_data_df = pd.read_csv(iris_data_path)
@@ -116,7 +117,7 @@ class kNN_Classifier:
             
             measure = numerator / denominator
         
-        # Cosine Similarity
+        # calculates Cosine Similarity
         elif distance_metric.lower() == 'Cosine Similarity'.lower():
             numerator = sum([(value * record2[0][index]) for index, value in enumerate(record1[0])])             
             norm_record1 = Calculate_Norm(record1)
@@ -133,7 +134,6 @@ class kNN_Classifier:
             # this if statement just catches and corrects those instances
             if measure < 0: measure = 0.0
             
-    
         return measure
 
     
@@ -208,21 +208,29 @@ class kNN_Classifier:
     def Score_Config(self, config, test_records=None):
         
         if isinstance(test_records, np.ndarray) == False: test_records = self.labled_records.copy()
-    
-        distance_metric, k = config; correct_count = 0
-        for i in range(test_records.shape[0]):
+        else: test_records = test_records.copy()
+        
+        distance_metric, k = config; correct_count = 0; cap = test_records.shape[0]
+        for i in range(cap):
+            test_records_copy = test_records.copy()
             
             # creates an unknown record from a known record
             test_record_i = self.Get_Record(test_records, i)
+            
+            if i == 0: test_records = test_records[1:]
+            elif i == cap-1: test_records = test_records[:-1]
+            else: test_records = np.delete(test_records, [i], axis=0)
+            
             unknown_record, actual_class_label = self.Split_Record_fromClass(test_record_i)
             
             # makes classification
             classified_label = self.Classify_UnknownRecord(distance_metric, k, unknown_record)
+            test_records = test_records_copy.copy()
             
             # adjusts score
             if classified_label == actual_class_label: correct_count += 1
-        
-        score = correct_count / test_records.shape[0]
+                
+        score = correct_count / cap
     
         return score
     
@@ -301,6 +309,7 @@ knn_classifier.ShowAccuracy(test_data)
 plt.show()
 
 ```
+
 
 
 
