@@ -15,8 +15,8 @@ summary: "The goal of this assignment is to learn about kNN."
 # Assignment 2
 #
 
-from sys import path # to help retrieve the csv
-import pandas as pd # to load the initial csv
+from sys import path # to locate the csv
+import pandas as pd # to load the csv
 import numpy as np # to utilize array structures
 import sklearn.model_selection # to help split the data
 import matplotlib.pyplot as plt # to display results
@@ -276,7 +276,7 @@ class kNN_Classifier:
             figure = plt.figure(num=None, figsize=(6, 4), dpi=80, facecolor='w', edgecolor='k').add_subplot()        
             figure.set_xlabel('k = ' + str(k))
         
-            dms = [] # creates the bar
+            dms = [] # creates the bars
             for element in bins[k]:
                 score = element[0]
                 dm = element[1][0]
@@ -309,7 +309,6 @@ knn_classifier.ShowAccuracy(test_data)
 plt.show()
 
 ```
-
 
 
 
