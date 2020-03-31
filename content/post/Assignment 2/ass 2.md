@@ -15,10 +15,7 @@ summary: "The goal of this assignment is to learn about kNN."
 # Assignment 2
 #
 
-from sys import path, exit
-
-import scipy # to calculate spatial distances, e.g. euclidean
-import numpy as np # to represent vectors
+import numpy as np # for array structures
 import pandas as pd # to load the initial csv
 import sklearn.model_selection # to help split the data
 import matplotlib.pyplot as plt # to display results
@@ -101,21 +98,41 @@ class kNN_Classifier:
     
     def Calculate_Distance(self, distance_metric, record1, record2):
     
+        def Calculate_Norm(v): return sum([value**2 for value in v[0]])**.5
+        
+        
         # calculates Euclidean Distance
-        if distance_metric.lower() == 'Euclidean Distance'.lower():
-            measure = scipy.spatial.distance.euclidean(record1, record2)
+        if distance_metric.lower() == 'Euclidean Distance'.lower():                                
+            measure = [(value - record2[0][index])**2 for index, value in enumerate(record1[0])]            
+            measure = sum(measure)**.5
             
         # calculates Normalized Euclidean Distance
         elif distance_metric.lower() == 'Normalized Euclidean Distance'.lower():
             record1_average = np.average(record1)
-            record2_average = np.average(record2)
-            numerator = (np.linalg.norm((record1 - record1_average) - (record2 - record2_average)))**2
-            denominator = (2*(((np.linalg.norm(record1 - record1_average))**2) + ((np.linalg.norm(record2 - record2_average))**2)))
+            record2_average = np.average(record2)  
+            
+            numerator = (Calculate_Norm((record1 - record1_average) - (record2 - record2_average)))**2            
+            denominator = (2*(((Calculate_Norm(record1 - record1_average))**2) + ((Calculate_Norm(record2 - record2_average))**2)))
+            
             measure = numerator / denominator
         
         # Cosine Similarity
         elif distance_metric.lower() == 'Cosine Similarity'.lower():
-            measure = scipy.spatial.distance.cosine(record1, record2)
+            numerator = sum([(value * record2[0][index]) for index, value in enumerate(record1[0])])             
+            norm_record1 = Calculate_Norm(record1)
+            norm_record2 = Calculate_Norm(record2)
+            denominator = norm_record1 * norm_record2
+            
+            # the value is subtracted from 1 so that no special care need be taken when comparing
+            # this measure against a measure calculated from the other distance metrics
+            measure = 1 - (numerator / denominator)
+            
+            # measure = 1 - (numerator / denominator) should always be a positive value
+            # however due to floating point calculations in python, sometimes this number
+            # is like -2.220446049250313e-16 which is almost 0, but not 0
+            # this if statement just catches and corrects those instances
+            if measure < 0: measure = 0.0
+            
     
         return measure
 
@@ -284,6 +301,7 @@ knn_classifier.ShowAccuracy(test_data)
 plt.show()
 
 ```
+
 
 
 {{< figure library="true" src="a2_output_0_0.jpg" lightbox="true" >}}
