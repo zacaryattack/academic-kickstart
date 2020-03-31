@@ -19,14 +19,11 @@ from sys import path # to locate the csv
 import pandas as pd # to load the csv
 import numpy as np # to utilize array structures
 import matplotlib.pyplot as plt # to display results
-
 ```
 
-```python
-```
 
-The first necessary function would be that which retrieves the data
 ```python
+# the first necessary function would be that which retrieves the data
 def Get_Iris_Development_andTest_Data(iris_data_path, development_percentage=0.75):
     
     # first thing, read the csv with the iris data
@@ -46,6 +43,7 @@ def Get_Iris_Development_andTest_Data(iris_data_path, development_percentage=0.7
     # shuffles the dataframe & resets the its index
     iris_data_df = iris_data_df.sample(frac=1).reset_index(drop=True)
         
+    # splits the data here
     cap = int(iris_data_df.shape[0] * development_percentage)
     development = iris_data_df[:cap]
     test = iris_data_df[cap:]
@@ -60,10 +58,11 @@ def Get_Iris_Development_andTest_Data(iris_data_path, development_percentage=0.7
     test = test.values
         
     return development, test
+```
 
 
-
-
+```python
+# the next step would be to design a kNN Classifier
 class kNN_Classifier:
     
     def __init__(self):
@@ -281,6 +280,7 @@ class kNN_Classifier:
             figure = plt.figure(num=None, figsize=(6, 4), dpi=80, facecolor='w', edgecolor='k').add_subplot()        
             figure.set_xlabel('k = ' + str(k))
         
+            score = 0
             dms = [] # creates the bars
             for element in bins[k]:
                 score = element[0]
@@ -298,21 +298,25 @@ class kNN_Classifier:
             if len(k_values) == 1:
                 figure.set_title('Optimal Hyperparameters: ' + dms[0] + ', k = ' + str(k))
                 figure.set_ylabel('Final Accuracy')
+                figure.text(-.25, 0, 'Final Accuracy: ' + '{:2.2f}'.format(score*100) + '%', verticalalignment='bottom', color='black', fontsize=15)
         
         return
+```
 
 
-
-
+```python
+# here we create the path to the location of our iris.data file
 iris_data_path = path[0] + '/data/iris.data'
+
+# now we create our 2 data sets
 development_data, test_data = Get_Iris_Development_andTest_Data(iris_data_path)
 
+# next we instantiate our kNN Classifier
 knn_classifier = kNN_Classifier()
 knn_classifier.Train(development_data)
 knn_classifier.ShowAccuracy(test_data)
 
 plt.show()
-
 ```
 
 
