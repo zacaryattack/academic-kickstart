@@ -22,6 +22,8 @@ import matplotlib.pyplot as plt # to display results
 
 ```
 
+```python
+```
 
 The first necessary function would be that which retrieves the data
 ```python
