@@ -1,10 +1,8 @@
----
-title: testing
-date: ------
+title: Assignment 2
+date: 2020-02-04
 
 # Put any other Academic metadata here...
-summary: "testing"
-url = "files/cv.pdf"
+summary: "The goal of this assignment is to learn about kNN on the IRIS dataset."
 ---
 
 
