@@ -6,6 +6,7 @@ date: 2020-02-04
 summary: "The goal of this assignment is to learn about kNN on the IRIS dataset."
 ---
 
+{{% staticref "files/Assignment 2.ipynb" "newtab" %}}Please download my ipynb code here.{{% /staticref %}}
 
 ```python
 #
