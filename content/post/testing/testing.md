@@ -4,7 +4,10 @@ date: 2020-13-03
 
 # Put any other Academic metadata here...
 summary: "testing 12 3"
-url: "files/cv.pdf"
+[[main]]
+  name = "CV"
+  url = "files/cv.pdf"
+  weight = 70
 ---
 
 
