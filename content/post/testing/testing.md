@@ -1,8 +1,9 @@
-title: Assignment 2
-date: 2020-02-04
+---
+title: Overfitting with Polynomial Regression
+date: 2020-13-03
 
 # Put any other Academic metadata here...
-summary: "The goal of this assignment is to learn about kNN on the IRIS dataset."
+summary: "Demonstrates The Concept of Overfitting Using Polynomial Regression."
 ---
 
 
