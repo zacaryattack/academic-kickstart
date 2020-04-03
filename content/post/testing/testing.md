@@ -5,12 +5,8 @@ date: 2020-13-03
 # Put any other Academic metadata here...
 summary: "testing 12 3"
 ---
-[[main]]
-  name = "CV"
-  url = "files/cv.pdf"
-  weight = 70
 
-
+{{%/* staticref "files/cv.pdf" "newtab" */%}}Download my CV{{%/* /staticref */%}}
 
 ```python
 #
