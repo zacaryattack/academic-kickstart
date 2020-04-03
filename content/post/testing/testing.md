@@ -22,7 +22,7 @@ import matplotlib.pyplot as plt # to display results
 
 {{< figure library="true" src="a2_output_0_4.jpg" lightbox="true" >}}
 
-{{% staticref "files/cv.pdf" "newtab" %}}Download my CV{{% /staticref %}}
+{{% staticref "files/Assignment 2.ipynb" "newtab" %}}Download my ipynb code here.{{% /staticref %}}
 
 ```python
 # the first necessary function would be that which retrieves the data
