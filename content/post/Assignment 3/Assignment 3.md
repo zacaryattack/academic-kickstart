@@ -317,6 +317,7 @@ print(' P[\"the\" | Positive] = {:.3f}%\n'.format(the_condprob))
 c. Calculate the following probability 
 
     c. Calculate the following probability
+    
     Probability of the occurrence:
                 P["the"] = ?
                 P["the"] = 99.543%
