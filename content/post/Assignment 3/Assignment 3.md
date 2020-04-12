@@ -84,6 +84,8 @@ def Load_Reviews(review_dir_path):
     reviews = []
     for file_path in file_paths:
         with open(file_path, 'r') as file: reviews.append(file.read())
+    
+    shuffle(reviews)
 
     return reviews
 
@@ -99,6 +101,8 @@ def Format_Reviews(reviews):
         # only keep alphanumeric characters
         review = re.sub('[^0-9a-zA-Z]+', ' ', review.lower())
         reviews[i] = ' '.join(review.split())
+    
+    shuffle(reviews)
     
     return reviews
 
@@ -304,7 +308,7 @@ nbc.Train(x_train, y_train, smoothing_flag=True)
 ##############################################################
 # c. Calculate the following probability
 ##############################################################
-print('\nc. Calculate the following probability')
+print('\nc. Calculate the following probabilities')
 
 print('\nProbability of the occurrence:\n' + ' '*12 + 'P[\"the\"] = ?')
 the_prob = nbc.Get_WordsProbability('the')
@@ -314,17 +318,18 @@ print('\nConditional Prob based on sentiment:\n P[\"the\" | Positive] = ?')
 the_condprob = nbc.Get_ConditionalProb_ofWord_based_onSentiment('the', 1)
 print(' P[\"the\" | Positive] = {:.3f}%\n'.format(the_condprob))
 ```
-c. Calculate the following probability 
 
-    c. Calculate the following probability
+c. Calculate the following probabilities
+    
+    c. Calculate the following probabilities
     
     Probability of the occurrence:
                 P["the"] = ?
-                P["the"] = 99.543%
+                P["the"] = 99.561%
     
     Conditional Prob based on sentiment:
      P["the" | Positive] = ?
-     P["the" | Positive] = 99.483%
+     P["the" | Positive] = 99.530%
     
 
 
@@ -379,15 +384,11 @@ class K_Fold_CrossValidation:
             accuracy = accuracy_score(y_dev, y_pred)*100
             
             # retain the accuracy score
-            scores.append(accuracy)
+            print('   accuracy {}: {:.3f}%'.format(i+1, accuracy))
             self.groups.insert(i, group)
         
-        print('\nCalculated accuracies during conduction of five fold cross validation.')
-        
-        for i, score in enumerate(scores): print('   accuracy {}: {:.3f}%'.format(i+1, score))
-        
-        print()
-        
+        print('\nCalculated accuracies during conduction of five fold cross validation.\n')
+                
         return
 
 
@@ -410,14 +411,14 @@ kfcv.Evaluate()
     
     d. Calculate accuracy using dev data set
     
-    Calculated accuracy using dev data set: 84.800%
+    Calculated accuracy using dev data set: 84.640%
+       accuracy 1: 85.080%
+       accuracy 2: 83.890%
+       accuracy 3: 84.650%
+       accuracy 4: 83.180%
+       accuracy 5: 94.050%
     
     Calculated accuracies during conduction of five fold cross validation.
-       accuracy 1: 84.720%
-       accuracy 2: 84.720%
-       accuracy 3: 84.240%
-       accuracy 4: 83.320%
-       accuracy 5: 94.150%
     
 
 
@@ -449,12 +450,12 @@ print('\nUsing smoothing resulted in accuracy that was {:.3f}% higher.\n'.format
     e. Doing following experiment (1): Compare the effects of Smoothing
     
     Naive Bayes Classifier without Smoothing.
-    Calculated accuracy using dev data set: 67.080%
+    Calculated accuracy using dev data set: 66.080%
     
     Naive Bayes Classifier with Smoothing.
-    Calculated accuracy using dev data set: 84.827%
+    Calculated accuracy using dev data set: 84.587%
     
-    Using smoothing resulted in accuracy that was 17.747% higher.
+    Using smoothing resulted in accuracy that was 18.507% higher.
     
 
 
@@ -539,6 +540,6 @@ print('\nCalculated FINAL accuracy using test data set: {:.3f}%\n'.format(accura
     
     Naive Bayes Classifier with optimal hyperparameter: Smoothing
     
-    Calculated FINAL accuracy using test data set: 84.827%
+    Calculated FINAL accuracy using test data set: 84.587%
     
 
