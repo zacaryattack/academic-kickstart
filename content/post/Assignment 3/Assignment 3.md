@@ -1,3 +1,14 @@
+---
+title: Assignment 3
+date: 2020-21-04
+
+# Put any other Academic metadata here...
+summary: "The goal of this assignment is to learn about the Naive Bayes Classifier (NBC)."
+---
+
+{{% staticref "files/Assignment 3.ipynb" "newtab" %}}Please download my ipynb code here.{{% /staticref %}}
+ 
+ 
  Zacary Cotton
  100 103 1997
  CSE 5334
