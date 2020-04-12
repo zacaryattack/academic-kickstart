@@ -38,14 +38,35 @@ from sklearn.model_selection import train_test_split # for splitting data
 # same dir as the unzipped aclImdb dir
 data_dir_path = path[0] + '/aclImdb'
 
+print()
+
 train_dir_path = data_dir_path + '/train'
+print(train_dir_path)
 train_pos_path = train_dir_path + '/pos'
+print(train_pos_path)
 train_neg_path = train_dir_path + '/neg'
+print(train_neg_path)
+
+print()
 
 test_dir_path = data_dir_path + '/test'
+print(test_dir_path)
 test_pos_path = test_dir_path + '/pos'
+print(test_pos_path)
 test_neg_path = test_dir_path + '/neg'
+print(test_neg_path, end='\n\n')
 ```
+
+    
+    /Users/zmo/here/jupyter/data mining/ass3/aclImdb/train
+    /Users/zmo/here/jupyter/data mining/ass3/aclImdb/train/pos
+    /Users/zmo/here/jupyter/data mining/ass3/aclImdb/train/neg
+    
+    /Users/zmo/here/jupyter/data mining/ass3/aclImdb/test
+    /Users/zmo/here/jupyter/data mining/ass3/aclImdb/test/pos
+    /Users/zmo/here/jupyter/data mining/ass3/aclImdb/test/neg
+    
+
 
 After having built our paths, next we must read each document 1 by 1 and store
 each's content in the form of a list, after that we must format each list to
@@ -299,18 +320,18 @@ print(' P[\"the\" | Positive] = {:.3f}%\n'.format(the_condprob))
     
     Probability of the occurrence:
                 P["the"] = ?
-                P["the"] = 99.551%
+                P["the"] = 99.543%
     
     Conditional Prob based on sentiment:
      P["the" | Positive] = ?
-     P["the" | Positive] = 99.491%
+     P["the" | Positive] = 99.483%
     
 
 
 d. Calculate accuracy using dev data set
 
-With k-fold cross validation we will estimate the skill of the model with
-k = 5
+Next we will perform part d., calculate accuracy using dev data set and use
+k-fold cross validation to estimate the skill of the model with k = 5
 
 ```python
 class K_Fold_CrossValidation:
@@ -389,14 +410,14 @@ kfcv.Evaluate()
     
     d. Calculate accuracy using dev data set
     
-    Calculated accuracy using dev data set: 84.520%
+    Calculated accuracy using dev data set: 84.800%
     
     Calculated accuracies during conduction of five fold cross validation.
-       accuracy 1: 84.450%
-       accuracy 2: 84.430%
-       accuracy 3: 84.810%
-       accuracy 4: 84.220%
-       accuracy 5: 94.250%
+       accuracy 1: 84.720%
+       accuracy 2: 84.720%
+       accuracy 3: 84.240%
+       accuracy 4: 83.320%
+       accuracy 5: 94.150%
     
 
 
@@ -428,12 +449,12 @@ print('\nUsing smoothing resulted in accuracy that was {:.3f}% higher.\n'.format
     e. Doing following experiment (1): Compare the effects of Smoothing
     
     Naive Bayes Classifier without Smoothing.
-    Calculated accuracy using dev data set: 67.053%
+    Calculated accuracy using dev data set: 67.080%
     
     Naive Bayes Classifier with Smoothing.
-    Calculated accuracy using dev data set: 84.467%
+    Calculated accuracy using dev data set: 84.827%
     
-    Using smoothing resulted in accuracy that was 17.413% higher.
+    Using smoothing resulted in accuracy that was 17.747% higher.
     
 
 
@@ -495,10 +516,10 @@ print()
 
 f. Using the test data set
 
-We have seen that the effects of using smoothing are much too impressive to
-neglect and so we train the model again with the train set and with the optimal
-hyperparameter being to use smoothing, we then calculate the final accuracy
-with the test set.
+Finally we will perform part f. We have seen that the effects of using
+smoothing are much too impressive to neglect and so we train the model
+again with the train set and with the optimal hyperparameter being to
+use smoothing, we then calculate the FINAL accuracy with the test set.
 
 ```python
 print('\nf. Using the test data set')
@@ -518,6 +539,6 @@ print('\nCalculated FINAL accuracy using test data set: {:.3f}%\n'.format(accura
     
     Naive Bayes Classifier with optimal hyperparameter: Smoothing
     
-    Calculated FINAL accuracy using test data set: 84.467%
+    Calculated FINAL accuracy using test data set: 84.827%
     
 
