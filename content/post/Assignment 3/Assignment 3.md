@@ -314,15 +314,15 @@ print('\nConditional Prob based on sentiment:\n P[\"the\" | Positive] = ?')
 the_condprob = nbc.Get_ConditionalProb_ofWord_based_onSentiment('the', 1)
 print(' P[\"the\" | Positive] = {:.3f}%\n'.format(the_condprob))
 ```
-c. Calculate the following probability NEW
+c. Calculate the following probability 
 
-    Probability of the occurrence:
-                P["the"] = ?
-                P["the"] = 99.543%
+        Probability of the occurrence:
+                    P["the"] = ?
+                    P["the"] = 99.543%
     
-    Conditional Prob based on sentiment:
-     P["the" | Positive] = ?
-     P["the" | Positive] = 99.483%
+        Conditional Prob based on sentiment:
+         P["the" | Positive] = ?
+         P["the" | Positive] = 99.483%
     
 
 
