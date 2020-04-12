@@ -8,14 +8,6 @@ summary: "The goal of this assignment is to learn about the Naive Bayes Classifi
 
 {{% staticref "files/Assignment 3.ipynb" "newtab" %}}Please download my ipynb code here.{{% /staticref %}}
  
- 
- Zacary Cotton
- 100 103 1997
- CSE 5334
- Assignment 3
-
-
-
 To successfully execute this .ipynb file, the text dataset dirrectory aclImdb,
 must be located within the same dirrectory as this .ipynb file.
 
