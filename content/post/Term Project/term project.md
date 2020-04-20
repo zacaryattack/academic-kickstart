@@ -40,7 +40,7 @@ print(csv_path)
 
     /Users/zmo/here/jupyter/data mining/project/boardgamegeek-reviews/bgg-13m-reviews.csv
 
-
+# 
 # Obtaining the Data
 
 Now that we have a path to our data we must read it into memory and preprocess
