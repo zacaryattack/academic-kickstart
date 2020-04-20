@@ -567,7 +567,7 @@ split the space into 3 with this kind of accuracy?
 
 Below is the testing of this model.
 
-### Experiment 3: Comparing SVM's Performance as Class Number Increases
+### Experiment 3: Comparing SVM's Performance as the Number of Classes Increase
 
 ```python
 vectorizer, x_train, y_train, x_dev, y_dev, x_test, y_test = data_sets.copy()
