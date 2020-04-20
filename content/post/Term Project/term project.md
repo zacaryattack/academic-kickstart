@@ -9,7 +9,10 @@ summary: "The goal of this project is to develop a classifier to aid in the clas
 #{{% staticref "files/100 103 1997 Zacary Cotton - Term Project.ipynb" "newtab" %}}Please download my ipynb code here.{{% /staticref %}}
 
 To successfully execute this .ipynb file, the dirrectory 'boardgamegeek-reviews'
-must be located within the same dirrectory as this .ipynb file.The boardgamegeek-reviews dirrectory can be obtained from url:In this blog post we will develop a classifier to aid in the classification of
+must be located within the same dirrectory as this .ipynb file.
+The boardgamegeek-reviews dirrectory can be obtained from [here](https://www.kaggle.com/jvanelteren/boardgamegeek-reviews).
+
+In this blog post we will develop a classifier to aid in the classification of
 comments onto a rating scale of 1 to 10 values.We begin by importing the necessary libraries and building the csv path in
 order to load the data, which upon download is located in a dirrectory called
 boardgamegeek-reviews, in csv file named 'bgg-13m-reviews.csv'.
@@ -40,7 +43,6 @@ print(csv_path)
 
     /Users/zmo/here/jupyter/data mining/project/boardgamegeek-reviews/bgg-13m-reviews.csv
 
-#     
 # Obtaining the Data
 
 Now that we have a path to our data we must read it into memory and preprocess
@@ -107,6 +109,9 @@ def Load_Data(csv_path):
 
 all_data_df = Load_Data(csv_path)
 ```
+
+# Looking at the Data
+
 Our data has been fully loaded and has been preprocessed. We may now take
 a little look at the data that we are dealing with in this project.
 
