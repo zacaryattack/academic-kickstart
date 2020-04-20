@@ -852,7 +852,7 @@ Again thank you,
 
 Zacary Cotton
 
-## References
+# References
 
 sklearn’s Naïve Bayes example:
 https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.MultinomialNB.html#sklearn.naive_bayes.MultinomialNB
