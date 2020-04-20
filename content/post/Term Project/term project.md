@@ -40,6 +40,9 @@ print(csv_path)
 
     /Users/zmo/here/jupyter/data mining/project/boardgamegeek-reviews/bgg-13m-reviews.csv
 
+
+# Obtaining the Data
+
 Now that we have a path to our data we must read it into memory and preprocess
 it by formating the comments and ratings. For the comments, we format off
 unnecessary elements such as extra whitespace, non-alpha characters, non-english
