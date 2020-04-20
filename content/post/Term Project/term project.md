@@ -567,7 +567,7 @@ split the space into 3 with this kind of accuracy?
 
 Below is the testing of this model.
 
-### Experiment 3: Comparing SVM's Performance as the Number of Classes Increases
+### Experiment 3: Comparing SVM's Performance as Class Number Increases
 
 ```python
 vectorizer, x_train, y_train, x_dev, y_dev, x_test, y_test = data_sets.copy()
@@ -676,7 +676,7 @@ prediction.
 Below is the testing of this Major_Classifier, which when given a comment will
 attempt to make a predciton as to what the rating is, to the nearest whole number.
 
-### Experiment 4: Developing & Testing a Classifier that is Composed of SVM Classifiers
+### Experiment 4: Making & Developing the Contribution to the Problem
 
 ```python
 class Major_Classifier:
@@ -757,7 +757,7 @@ that gets better accuracy than what SVM does on its own. Yes, this accuracy may
 seem low but it is much better than randomly picking a value, where the
 probability of randomly picking correctly is about 10%.
 
-### Experiment 5: Determining the Hyperparameters for the Major Classifier Developed in Experiment 4
+### Experiment 5: Hyperparameter Tuning
 
 Now it is time to tune our hyperparameters. We must find a hyperparameter C, or
 the Regularization parameter, that can possible achieve a higher accuracy.
@@ -820,7 +820,7 @@ figure = figure.set_ylabel('Accuracy')
 From the above graph we can find our optimal hyperparameter for C. With this optimal
 hyperparameter we will now test our model's final accuracy with test data set.
 
-### Experiment 6: Determining the Performance of the Developed Major Classifier with its Optimal Hyperparameter on the Test Data Set
+### Experiment 6: Performing the Final Evaluation
 
 ```python
 vectorizer, x_train, y_train, x_dev, y_dev, x_test, y_test = data_sets.copy()
