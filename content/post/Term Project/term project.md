@@ -851,3 +851,16 @@ Thank you for reading my blog post,
 Again thank you,
 
 Zacary Cotton
+
+## References
+
+sklearn’s Naïve Bayes example:
+https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.MultinomialNB.html#sklearn.naive_bayes.MultinomialNB
+
+
+sklearn’s KNN example:
+https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html
+
+
+sklearn’s SVM example:
+https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html
