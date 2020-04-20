@@ -375,7 +375,7 @@ to convert Y values to integers so that Naive Bayes can correcly function.
 So we create the helper function, Ratings_toInt() and also a dictionary accuracies
 to record each classifier's accuracy with the data.
 
-### Experiment 1: Comparing Classifiers
+### Experiment 1: Comparing Classifier Performance
 
 ```python
 accuracies = {}
