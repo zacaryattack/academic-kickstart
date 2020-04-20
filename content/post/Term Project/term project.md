@@ -43,7 +43,8 @@ print(csv_path)
 
     /Users/zmo/here/jupyter/data mining/project/boardgamegeek-reviews/bgg-13m-reviews.csv
 
-### Obtaining the Data& Performing Data Pre-processing
+### Obtaining the Data & Performing
+### Data Pre-processing
 
 Now that we have a path to our data we must read it into memory and preprocess
 it by formating the comments and ratings. For the comments, we format off
@@ -110,7 +111,7 @@ def Load_Data(csv_path):
 all_data_df = Load_Data(csv_path)
 ```
 
-# Looking at the Data
+### Looking at the Data
 
 Our data has been fully loaded and has been preprocessed. We may now take
 a little look at the data that we are dealing with in this project.
@@ -360,7 +361,7 @@ def Split_DF_as_XY(df, train, dev, test):
 data_sets = Split_DF_as_XY(scaled_df, train=.7, dev=.15, test=.15)
 ```
 
-# Deciding on a Classifier
+### Deciding on a Classifier
 
 At long last, we now finally have our data in the appropriate format and we are
 ready to begin experimentation.
@@ -374,7 +375,7 @@ to convert Y values to integers so that Naive Bayes can correcly function.
 So we create the helper function, Ratings_toInt() and also a dictionary accuracies
 to record each classifier's accuracy with the data.
 
-# Experiment 1: Comparing Classifiers
+### Experiment 1: Comparing Classifiers
 
 ```python
 accuracies = {}
@@ -533,7 +534,7 @@ We will create a model of SVM that can classify a comment as either positve or n
 
 Below is the testing of this model.
 
-# Experiment 2: Testing SVM on a More Relaxed Version of the Problem
+### Experiment 2: Testing SVM on a More Relaxed Version of the Problem
 
 ```python
 vectorizer, x_train, y_train, x_dev, y_dev, x_test, y_test = data_sets.copy()
@@ -566,7 +567,7 @@ split the space into 3 with this kind of accuracy?
 
 Below is the testing of this model.
 
-# Experiment 3: Comparing SVM's Performance as the Number of Classes Increases
+### Experiment 3: Comparing SVM's Performance as the Number of Classes Increases
 
 ```python
 vectorizer, x_train, y_train, x_dev, y_dev, x_test, y_test = data_sets.copy()
@@ -675,7 +676,7 @@ prediction.
 Below is the testing of this Major_Classifier, which when given a comment will
 attempt to make a predciton as to what the rating is, to the nearest whole number.
 
-# Experiment 4: Developing & Testing a Classifier that is Composed of SVM Classifiers
+### Experiment 4: Developing & Testing a Classifier that is Composed of SVM Classifiers
 
 ```python
 class Major_Classifier:
@@ -756,7 +757,7 @@ that gets better accuracy than what SVM does on its own. Yes, this accuracy may
 seem low but it is much better than randomly picking a value, where the
 probability of randomly picking correctly is about 10%.
 
-# Experiment 5: Determining the Hyperparameters for the Major Classifier Developed in Experiment 4
+### Experiment 5: Determining the Hyperparameters for the Major Classifier Developed in Experiment 4
 
 Now it is time to tune our hyperparameters. We must find a hyperparameter C, or
 the Regularization parameter, that can possible achieve a higher accuracy.
@@ -819,7 +820,7 @@ figure = figure.set_ylabel('Accuracy')
 From the above graph we can find our optimal hyperparameter for C. With this optimal
 hyperparameter we will now test our model's final accuracy with test data set.
 
-# Experiment 6: Determining the Performance of the Developed Major Classifier with its Optimal Hyperparameter on the Test Data Set
+### Experiment 6: Determining the Performance of the Developed Major Classifier with its Optimal Hyperparameter on the Test Data Set
 
 ```python
 vectorizer, x_train, y_train, x_dev, y_dev, x_test, y_test = data_sets.copy()
