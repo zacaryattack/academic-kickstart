@@ -820,7 +820,7 @@ figure = figure.set_ylabel('Accuracy')
 From the above graph we can find our optimal hyperparameter for C. With this optimal
 hyperparameter we will now test our model's final accuracy with test data set.
 
-### Experiment 6: Performing the Final Evaluation
+### Experiment 6: Performing the Final Evaluation & Testing for Overfit
 
 ```python
 vectorizer, x_train, y_train, x_dev, y_dev, x_test, y_test = data_sets.copy()
@@ -851,6 +851,12 @@ Thank you for reading my blog post,
 Again thank you,
 
 Zacary Cotton
+
+# Challenges Faced
+
+         This project presented many challenges as the data set was very large and very difficult to predict. Many of the comments were quite long, non-English, and not all encoded in the same format. As for the ratings, class representation was not exactly even. The smallest range of values was 10 whiles the largest was closer to 726470, so the class representation was quite skewed. Also, many ratings went many places behind the decimal point. To develop a model with such precision that could deal with such issues could likely only be done with a Neural Network. Many questions arrived as research began. Questions such as, Can this be done without a Neural Network? Which model should be the starting point? How to achieve an increased accuracy? What hyperparameters are necessary? Can I implement an optimization idea to increase accuracy? Fortunately, all of these questions were able to be answered. But the main question was, Can I make a model to predict the data? Can I increase this model’s accuracy? The answer to both of these challenges was yes. A model can be made to predict the data and this model is not a Neural Network. And yes, I could increase the achieved accuracy.
+
+
 
 # References
 
