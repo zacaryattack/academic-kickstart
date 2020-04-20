@@ -676,7 +676,7 @@ prediction.
 Below is the testing of this Major_Classifier, which when given a comment will
 attempt to make a predciton as to what the rating is, to the nearest whole number.
 
-### Experiment 4: Making & Developing the Contribution to the Problem
+### Experiment 4: Making the Contribution, or the Solution to the Problem
 
 ```python
 class Major_Classifier:
