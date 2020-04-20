@@ -823,5 +823,7 @@ this model's hyperparameters to find an optimal value. We then outperformed SVM
 yet again.
 
 Thank you for reading my blog post,
+
 Again thank you,
+
 Zacary Cotton
