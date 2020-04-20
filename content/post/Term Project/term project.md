@@ -43,7 +43,8 @@ print(csv_path)
 
     /Users/zmo/here/jupyter/data mining/project/boardgamegeek-reviews/bgg-13m-reviews.csv
 
-# Obtaining the Data & Performing Data Pre-processing
+# Obtaining the Data &
+# Performing Data Pre-processing
 
 Now that we have a path to our data we must read it into memory and preprocess
 it by formating the comments and ratings. For the comments, we format off
@@ -374,7 +375,7 @@ to convert Y values to integers so that Naive Bayes can correcly function.
 So we create the helper function, Ratings_toInt() and also a dictionary accuracies
 to record each classifier's accuracy with the data.
 
-# Experiment 1: Comparing Classifier
+# Experiment 1: Comparing Classifiers
 
 ```python
 accuracies = {}
