@@ -14,14 +14,33 @@ in this .ipynb file must be executed sequentially.
 
 The boardgamegeek-reviews dirrectory can be obtained from [here](https://www.kaggle.com/jvanelteren/boardgamegeek-reviews).
 
-In this blog post we will develop a classifier to aid in the classification of comments onto a rating scale of 1 to 10. Along the way we explore the application of several different classifier models on a data set consisting of user made comments associated with user selected ratings.
+# The Focus of This Blog
+In this blog post we develop a classifier to aid in the classification of comments
+onto a rating scale of 1 to 10. Along the way we explore the application of several
+different classifier models on a data set consisting of user made comments associated
+with user selected ratings.
 
-Of the investigated models, SVM was noticed to consecutively outperform both Naïve Bayes and KNN methods. Because of SVM’s success it was chosen as the starting method for learning the data at hand. However, even though SVM did outperform the others, its accuracy still struggled greatly to pass the value range 30-32%.
+The mapping of sentimental values to a string of characters when considering sentimental
+values of the range 0 to 1 is a task that is today quite trivial. However, implanting an
+algorithm to map a string of characters to sentimental values of the range 0 to 10 and
+sentimental values can be 7.009 or 3.00901, this task proved to be quite difficult. I had
+used Naïve Bayes before and prior to engaging in this experiment, I would have assumed that
+Naïve Bayes would have hands down, outperformed all and would have been the go-to tool for
+this kind of data. But as the research will show, it could not keep up with the success of
+SVM. However, on the other hand, SVM only managed to maintain a position that was some
+2-4% above NB. But as was the solution to the challenge, a more layered approach to SVM
+with ensemble methods demonstrated to be the key in increasing the accuracy.
 
-The challenge became, how to increase this accuracy? The answer was, by implementing an optimization idea via ensemble methods. So here we develop several model configurations and select the combination that performed best. Results demonstrated that there was an increase in accuracy, of some 2.9-4%.
+Of the investigated models, SVM was noticed to consecutively outperform both Naïve
+Bayes and KNN methods. Because of SVM’s success it was chosen as the starting method
+for learning the data at hand. However, even though SVM did outperform the others,
+its accuracy still struggled greatly to pass the value range 30-32%.
 
+S the main challenge became, how to increase this accuracy? The answer was, by implementing
+an optimization idea via ensemble methods. So here we develop several model configurations
+and select the combination that performed best. Results demonstrated that there was an
+increase in accuracy, of some 2.9-4%, which is often expected when using ensemble methods.
 ### Obtaining the Data & Data Pre-processing
-
 We begin by importing the necessary libraries and building the csv path in
 order to load the data, which upon download is located in a directory called
 boardgamegeek-reviews, in csv file named 'bgg-13m-reviews.csv'.
@@ -118,7 +137,6 @@ all_data_df = Load_Data(csv_path)
 ```
 
 ### Looking at the Data
-
 Our data has been fully loaded and has been preprocessed. We may now take
 a little look at the data that we are dealing with in this project.
 
@@ -265,8 +283,7 @@ that we can draw a smaller sample of the data to use during classification
 algorithm development and then later we can test our algorithm on the whole set.
 
 So now we create another helper function, Get_Scaled_Data()
-
-### Scaling Down our Data Size, but maintaining proportions
+### Scaling Down our Data Size, but Maintaining Proportions
 
 
 ```python
@@ -317,7 +334,7 @@ print('\ntotal data count: ', scaled_df.shape[0])
     total data count:  499996
 
 From the print out above it can be seen that now our smallest class representation
-is closer to 3,000 and our largest class representation is closer to 160000.
+is closer to 4,000 and our largest class representation is closer to 160000.
 
 Get_Scaled_Data simply scaled each group so that the count of all ratings would
 be less than or equal to N, or 500,000
@@ -371,7 +388,6 @@ data_sets = Split_DF_as_XY(scaled_df, train=.7, dev=.15, test=.15)
 ```
 
 ### Deciding on a Classifier
-
 At long last, we now finally have our data in the appropriate format and we are
 ready to begin experimentation.
 
@@ -383,7 +399,6 @@ to convert Y values to integers so that Naive Bayes can correctly function.
 
 So we create the helper function, Ratings_toInt() and also a dictionary accuracies
 to record each classifier's accuracy with the data.
-
 # Experiment 1: Comparing Classifier Performance
 
 
@@ -407,7 +422,6 @@ the rule,
         else rating is equal to rating
 
 And now we create and test a Naive Bayes classifier.
-
 ### Naive Bayes Performance
 
 
@@ -441,7 +455,6 @@ classifier.
 
 Again we must make use of our helper function Ratings_toInt as KNN requires
 integer values to function correctly.
-
 ### KNN Performance
 
 
@@ -497,7 +510,6 @@ that Naive Bayes and KNN have performed so terribly with the data at hand.
 So now we define and test a SVM classifier. Yet again, we must make use of
 our helper function Ratings_toInt as SVM requires integer values to function
 correctly.
-
 ### SVM Performance
 
 
@@ -542,7 +554,6 @@ accuracies = []
 
 {{< figure library="true" src="p3.jpg" lightbox="true" >}}
 
-
 The bar graph above shows the comparison of each classifier and its accuracy against
 that of the other classifiers and their accuracies. SVM's performance can be seen to
 stand out here. However, this accuracy with SVM is still very low.
@@ -553,7 +564,7 @@ Let us create an experiment for SVM on a more simplified version of our problem.
 We will create a model of SVM that can classify a comment as either positive or negative.
 
 Below is the testing of this model.
-# Experiment 2: Test SVM on More Relaxed Problem
+# Experiment 2: Test SVM on a More Relaxed Problem
 
 
 ```python
@@ -586,7 +597,6 @@ Let us perform some more experiments to see what we are dealing with. Can we
 split the space into 3 with this kind of accuracy?
 
 Below is the testing of this model.
-
 # Experiment 3: Comparing SVM Performance as the Number of Classes Increase
 
 
@@ -686,21 +696,19 @@ From the graph above we can see that as we increase the number of classes,
 we decrease SVM's accuracy. So that did not work. But we did get really good
 accuracy when the problem was binary, so is there some way to keep the
 problem binary and get higher accuracy than SVM on its own?
-
-Next we will define a model that will utilize ensemble methods. There will
-be several SVM classifiers trained on non overlapping data and make binary
-decisiones until an overall classification can be made. The model will have 1
-classifier for each class. Each classifier will be trained over the same data,
-however, for each classifier the rating values will be different. Each
-classifier will attempt to decide whether the comment's rating is on the left
-or the right side of the rating continuum. Once the algorithm detects that
-which side the rating is in, it will make its prediction.
+# Experiment 4: Making the Contribution: Ensemble Methods
+Next we will define a model that will utilize ensemble methods. There will be
+several SVM classifiers trained on the same data, but with different labels.
+Each classifier will make a binary decision until an overall classification can
+be made. The model will have 1 classifier for each class. Each classifier will be
+trained over the same data, however, for each classifier the rating values, or
+the labels, will be different. Each classifier will attempt to decide whether
+the comment's rating is on the left or the right side of the rating continuum.
+Once the algorithm detects which side the rating is on, it makes a prediction
+or passes the comment to the next classifier to make a more precise prediction.
 
 Below is the testing of this Major_Classifier, which when given a comment will
 attempt to make a prediction as to what the rating is, to the nearest whole number.
-
-# Experiment 4: Making the Contribution: Ensemble Methods
-
 
 ```python
 class Major_Classifier:
@@ -778,9 +786,7 @@ Thats better than what SVM can do all on its own! We did it, we created a model
 that gets better accuracy than what SVM does on its own. Yes, this accuracy may
 seem low but it is much better than randomly picking a value, where the
 probability of randomly picking correctly is about 10%.
-
 # Experiment 5: Hyperparameter Tuning
-
 Now it is time to tune our hyperparameters. We must find a hyperparameter C, or
 the Regularization parameter, that can possible achieve a higher accuracy.
 
@@ -841,7 +847,6 @@ figure = figure.set_ylabel('Accuracy')
 
 From the above graph we can find our optimal hyperparameter for C. With this optimal
 hyperparameter we will now test our model's final accuracy with test data set.
-
 # Experiment 6: Performing the Final Evaluation & Checking for Overfit
 
 
@@ -868,10 +873,23 @@ Nice, our final accuracy is a good improvement over what SVM could do when it
 was only by itself. We created a model that outperformed SVM and then we tuned
 this model's hyperparameters to find an optimal value. We then outperformed SVM
 yet again.
-
 ### Results and Conclusions
+Results showed that Naïve Bayes and KNN where not the right classifiers for the kind
+of data that was associated with this project even after moderate hyperparameters had
+been located for each. In the end it was the Support Vector Machines that showed to
+have any handle on the data. Without any hyperparameter tuning SVM was able to score
+higher than Naïve Bayes and KNN with their optimal hyperparameters.
 
-Results showed that Naïve Bayes and KNN where not the right classifiers for the kind of data that was associated with this project even after moderate hyperparameters had been located for each. In the end it was the Support Vector Machines that showed to have any handle on the data. Without any hyperparameter tuning SVM was able to score higher than Naïve Bayes and KNN with their optimal hyperparameters. Yes, SVM’s accuracy was also low, approximately some 30%, however, with the developed Major Classifier model with its optimal hyperparameters that I made for this project, predictions could then be made with accuracies above 35% and almost to 36%. This is much better than just randomly guessing which would select a correct answer some 10% of the time. In conclusion, I set out to see if I could create a version of a known classification model that could calculate better accuracies than those of the classifications model without my enhancements. I am pleased to say that I was able to create such a model and contribute to an increased calculated accuracy.
+Yes, SVM’s accuracy was also low, approximately some 30%, however, with the developed
+Major Classifier model with its optimal hyperparameters that I made for this project,
+predictions could then be made with accuracies above 35% and almost to 36%. This is much
+better than just randomly guessing which would select a correct answer some 10% of the
+time.
+
+In conclusion, I set out to see if I could create a version of a known classification
+model that could calculate better accuracies than those of the classifications model
+without my enhancements. I am pleased to say that I was able to create such a model and
+contribute to an increased calculated accuracy.
 Thank you for reading my blog post,
 
 Again thank you,
@@ -882,20 +900,42 @@ Zacary Cotton
 
 ```
 
-# Challenges Faced
+# Challenges
+This project presented many challenges as the data set was very large and very
+difficult to predict. Many of the comments were quite long, non-english, and
+not all encoded in the same format. As for the ratings, class representation was
+not exactly even. The smallest range of values was 10 while the largest was closer
+to 726470, so class representation was quite skewed. Also, many ratings went many
+places behind the decimal point. To develop a model with such precision that could
+deal with such issues could likely only be done with a Neural Network. Many questions
+arrived as research began. Questions such as, Can this be done without a Neural
+Network? Which classifier should be the starting point? How to achieve an increased
+accuracy? What hyperparameters are necessary? Can I implement an optimization idea
+to increase accuracy? Fortunately, all of these questions were able to be answered.
+But the main questions were, Can a model be made to predict the data? Can this model’s
+accuracy be increased? The answer to both of these challenges was yes. A model could
+be made to predict the data and the accuracy could be increased by ensemble Methods.
 
-This project presented many challenges as the data set was very large and very difficult to predict.
-Many of the comments were quite long, non-english, and not all encoded in the same format. As for
-the ratings, class representation was not exactly even. The smallest range of values was 10 while
-the largest was closer to 726470, so class representation was quite skewed. Also, many ratings went
-many places behind the decimal point. To develop a model with such precision that could deal with
-such issues could likely only be done with a Neural Network. Many questions arrived as research began.
-Questions such as, Can this be done without a Neural Network? Which classifier should be the starting
-point? How to achieve an increased accuracy? What hyperparameters are necessary? Can I implement an
-optimization idea to increase accuracy? Fortunately, all of these questions were able to be answered.
-But the main question was, Can a model be made to predict the data? Can this model’s accuracy be
-increased? The answer to both of these challenges was yes. A model can be made to predict the data and
-this model is not a Neural Network. And yes, the accuracy could be increased via an optimization idea.
+
+```python
+
+```
+
+# The Contribution
+Because many classifiers performed so poorly with the given data, the main plan for
+attack became to develop a model that could perform better and achieve higher accuracy.
+The model I developed for this project ended up being a more layered version of SVM
+that applied ensemble methods such as utilizing multiple SVM classifiers that had been
+trained to give independent answers.
+
+My algorithm involved using several SVM classifiers that were trained on the same data,
+but with different labels for each classifier. Each classifier makes a binary decision
+until an overall classification can be made. The model has 1 classifier for each class.
+Each classifier is trained over the same data, however, for each classifier the rating
+values, or the labels, are different. Each classifier attempts to decide whether the
+comment's rating is on the left or the right side of the rating continuum. Once my
+algorithm detects which side the rating is on, it makes a prediction or passes the
+comment to the next classifier to make a more precise prediction.
 
 
 ```python
