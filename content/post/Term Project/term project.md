@@ -12,7 +12,7 @@ Click [here](http://zacaryattack.pythonanywhere.com/Zacary%20Cotton/CSE%205334%2
 
 To successfully execute this .ipynb file, the dirrectory 'boardgamegeek-reviews'
 must be located within the same dirrectory as this .ipynb file.
-The boardgamegeek-reviews dirrectory can be obtained from [here](https://www.kaggle.com/jvanelteren/boardgamegeek-reviews).
+The boardgamegeek-reviews dirrectory can be obtained from [here](https://www.kaggle.com/jvanelteren/boardgamegeek-reviews){:target="_blank"}.
 
 In this blog post we will develop a classifier to aid in the classification of
 comments onto a rating scale of 1 to 10 values.We begin by importing the necessary libraries and building the csv path in
