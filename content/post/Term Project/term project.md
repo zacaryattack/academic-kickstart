@@ -1,5 +1,5 @@
 ---
-title: Term Project - CSE 5334: Data Mining
+title: Term Project - CSE 5334 - Data Mining
 date: 2020-01-05
 
 # Put any other Academic metadata here...
