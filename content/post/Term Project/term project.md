@@ -8,13 +8,22 @@ summary: "The goal of this project is to develop a classifier to aid in the clas
 
 #{{% staticref "files/100 103 1997 Zacary Cotton - Term Project.ipynb" "newtab" %}}Please download my ipynb code here.{{% /staticref %}}
 
-To successfully execute this .ipynb file, the dirrectory 'boardgamegeek-reviews'
-must be located within the same dirrectory as this .ipynb file.
+To successfully execute this .ipynb file, the directory 'boardgamegeek-reviews'
+must be located within the same directory as this .ipynb file and all cells
+in this .ipynb file must be executed sequentially.
+
 The boardgamegeek-reviews dirrectory can be obtained from [here](https://www.kaggle.com/jvanelteren/boardgamegeek-reviews).
 
-In this blog post we will develop a classifier to aid in the classification of
-comments onto a rating scale of 1 to 10 values.We begin by importing the necessary libraries and building the csv path in
-order to load the data, which upon download is located in a dirrectory called
+In this blog post we will develop a classifier to aid in the classification of comments onto a rating scale of 1 to 10. Along the way we explore the application of several different classifier models on a data set consisting of user made comments associated with user selected ratings.
+
+Of the investigated models, SVM was noticed to consecutively outperform both Naïve Bayes and KNN methods. Because of SVM’s success it was chosen as the starting method for learning the data at hand. However, even though SVM did outperform the others, its accuracy still struggled greatly to pass the value range 30-32%.
+
+The challenge became, how to increase this accuracy? The answer was, by implementing an optimization idea via ensemble methods. So here we develop several model configurations and select the combination that performed best. Results demonstrated that there was an increase in accuracy, of some 2.9-4%.
+
+### Obtaining the Data & Data Pre-processing
+
+We begin by importing the necessary libraries and building the csv path in
+order to load the data, which upon download is located in a directory called
 boardgamegeek-reviews, in csv file named 'bgg-13m-reviews.csv'.
 
 ```python
@@ -42,9 +51,6 @@ print(csv_path)
 ```
 
     /Users/zmo/here/jupyter/data mining/project/boardgamegeek-reviews/bgg-13m-reviews.csv
-
-### Obtaining the Data
-### & Performing Data Pre-processing
 
 Now that we have a path to our data we must read it into memory and preprocess
 it by formating the comments and ratings. For the comments, we format off
@@ -182,7 +188,7 @@ print('\ntotal data count: ', total)
     total data count:  2790224
 
 The print out above is of all ratings grouped together into integer range groups.
-These ranges were created by asigning a rating to a group by following this
+These ranges were created by assigning a rating to a group by following this
 simple rule,
             if rating - int(rating) <= .5
             then add rating to group int(rating)
@@ -205,7 +211,7 @@ for rating in df_by_class: plt.bar(rating, df_by_class[rating].shape[0])
 
 The range of ratings around 0 is equal to 10. That is, our smallest class is
 represented by only 10 elements whereas our most dominant class is represented
-by around 700000 elements. Becuase of the drastic difference in representation,
+by around 700000 elements. Because of the drastic difference in representation,
 we will be dropping data records where rating is < 1.
 
 ```python
@@ -255,10 +261,13 @@ print('\ntotal data count: ', total, '\n')
     total data count:  2790210
 
 As can be seen in the print out above, we have enough elements for each class
-that we can draw a smaller smaple of the data to use during classification
+that we can draw a smaller sample of the data to use during classification
 algorithm development and then later we can test our algorithm on the whole set.
 
 So now we create another helper function, Get_Scaled_Data()
+
+### Scaling Down our Data Size, but maintaining proportions
+
 
 ```python
 def Get_Scaled_Data(df, N):
@@ -310,7 +319,7 @@ print('\ntotal data count: ', scaled_df.shape[0])
 From the print out above it can be seen that now our smallest class representation
 is closer to 3,000 and our largest class representation is closer to 160000.
 
-Get_Scaled_Data simply scalled each group so that the count of all ratings would
+Get_Scaled_Data simply scaled each group so that the count of all ratings would
 be less than or equal to N, or 500,000
 
 Our data count is now 499996, this should be large enough to develop our algorithm
@@ -318,7 +327,7 @@ while also being small enough that algorithm test times will not take longer tha
 30 minutes to compute.
 
 So now we must split our dataframe into the x_train, y_train, x_dev, y_dev,
-and x_test, y_test data sets. However, becuase each x value is a string we will
+and x_test, y_test data sets. However, because each x value is a string we will
 need to convert each x value into a numerical sequence by using a vectorizer.
 This vectorizer will be needed anytime we want to pass our classifier a string
 to classify. So to perform these actions we will create another helper function,
@@ -368,14 +377,15 @@ ready to begin experimentation.
 
 Our first question is, What classifier maybe best suited for the given data?
 
-Because the data is text, we will try our luck with Naive Bayes. However, becuase
-we are going to test the data with Naive Bayes, we must create a helper fucntion
-to convert Y values to integers so that Naive Bayes can correcly function.
+Because the data is text, we will try our luck with Naive Bayes. However, becasue
+we are going to test the data with Naive Bayes, we must create a helper function
+to convert Y values to integers so that Naive Bayes can correctly function.
 
 So we create the helper function, Ratings_toInt() and also a dictionary accuracies
 to record each classifier's accuracy with the data.
 
-### Experiment 1: Comparing Classifier Performance
+# Experiment 1: Comparing Classifier Performance
+
 
 ```python
 accuracies = {}
@@ -397,6 +407,9 @@ the rule,
         else rating is equal to rating
 
 And now we create and test a Naive Bayes classifier.
+
+### Naive Bayes Performance
+
 
 ```python
 vectorizer, x_train, y_train, x_dev, y_dev, x_test, y_test = data_sets.copy()
@@ -422,12 +435,15 @@ Yikes, that is very low accuracy and thats with the hyperparameter alpha=1 for
 Laplace smoothing and the ratings as integers and not even floats. Clearly this
 job is too much for Naive Bayes. So which classifier should we try next?
 
-Well, becuase we had to vectorize our x values, our next candidate can be KNN
-becasue KNN can measure simularity of our x vectors. So now we ceate a KNN
+Well, because we had to vectorize our x values, our next candidate can be KNN
+because KNN can measure simularity of our x vectors. So now we create a KNN
 classifier.
 
 Again we must make use of our helper function Ratings_toInt as KNN requires
-integer values to function correcly.
+integer values to function correctly.
+
+### KNN Performance
+
 
 ```python
 vectorizer, x_train, y_train, x_dev, y_dev, x_test, y_test = data_sets.copy()
@@ -480,7 +496,10 @@ that Naive Bayes and KNN have performed so terribly with the data at hand.
 
 So now we define and test a SVM classifier. Yet again, we must make use of
 our helper function Ratings_toInt as SVM requires integer values to function
-correcly.
+correctly.
+
+### SVM Performance
+
 
 ```python
 vectorizer, x_train, y_train, x_dev, y_dev, x_test, y_test = data_sets.copy()
@@ -523,6 +542,7 @@ accuracies = []
 
 {{< figure library="true" src="p3.jpg" lightbox="true" >}}
 
+
 The bar graph above shows the comparison of each classifier and its accuracy against
 that of the other classifiers and their accuracies. SVM's performance can be seen to
 stand out here. However, this accuracy with SVM is still very low.
@@ -530,11 +550,11 @@ stand out here. However, this accuracy with SVM is still very low.
 Our next question is, Can we improve this accuracy?
 
 Let us create an experiment for SVM on a more simplified version of our problem.
-We will create a model of SVM that can classify a comment as either positve or negative.
+We will create a model of SVM that can classify a comment as either positive or negative.
 
 Below is the testing of this model.
+# Experiment 2: Test SVM on More Relaxed Problem
 
-### Experiment 2: Testing SVM on a More Relaxed Version of the Problem
 
 ```python
 vectorizer, x_train, y_train, x_dev, y_dev, x_test, y_test = data_sets.copy()
@@ -567,7 +587,8 @@ split the space into 3 with this kind of accuracy?
 
 Below is the testing of this model.
 
-### Experiment 3: Comparing SVM's Performance as the Number of Classes Increase
+# Experiment 3: Comparing SVM Performance as the Number of Classes Increase
+
 
 ```python
 vectorizer, x_train, y_train, x_dev, y_dev, x_test, y_test = data_sets.copy()
@@ -604,7 +625,7 @@ print('SVM: trinary accuracy: {:.3f}%\n'.format(accuracy))
 
 Oh no, we lost a lot of our accuracy, but we still have a decent level. However,
 taking the problem from binary to trinary may not be the best decision, but let
-us see what happens if we ask SVM to seperate the space into 4.
+us see what happens if we ask SVM to separate the space into 4.
 
 Below is the testing of this new model.
 
@@ -646,8 +667,8 @@ print('SVM: quadnary accuracy: {:.3f}%\n'.format(accuracy))
 Oh no, that is an even bigger reduction in accuracy. Taking the problem further
 from binary may not be the best decision.
 
-Let's look at the changes in accuracy that occurred as we increasaed the the
-number of spaces that we wanted to seperate the data into with SVM, in graph form.
+Let's look at the changes in accuracy that occurred as we increased the the
+number of spaces that we wanted to separate the data into with SVM, in graph form.
 
 ```python
 figure = plt.figure(num=None, figsize=(6, 4), dpi=80, facecolor='w', edgecolor='k').add_subplot()        
@@ -666,17 +687,20 @@ we decrease SVM's accuracy. So that did not work. But we did get really good
 accuracy when the problem was binary, so is there some way to keep the
 problem binary and get higher accuracy than SVM on its own?
 
-Next we will define a model that will use SVM classifiers to make binary
+Next we will define a model that will utilize ensemble methods. There will
+be several SVM classifiers trained on non overlapping data and make binary
 decisiones until an overall classification can be made. The model will have 1
-classifier for each class. Each classifier will attempt to decide whether the
-comment's rating is on the left or the right side of the rating continuum.
-Once the algorithm detects that which side the rating is in, it will make its
-prediction.
+classifier for each class. Each classifier will be trained over the same data,
+however, for each classifier the rating values will be different. Each
+classifier will attempt to decide whether the comment's rating is on the left
+or the right side of the rating continuum. Once the algorithm detects that
+which side the rating is in, it will make its prediction.
 
 Below is the testing of this Major_Classifier, which when given a comment will
-attempt to make a predciton as to what the rating is, to the nearest whole number.
+attempt to make a prediction as to what the rating is, to the nearest whole number.
 
-### Experiment 4: Making the Contribution/the Solution to the Problem
+# Experiment 4: Making the Contribution: Ensemble Methods
+
 
 ```python
 class Major_Classifier:
@@ -723,9 +747,7 @@ class Major_Classifier:
             for label in self.labels:
                 p = self.classifiers[label].predict(v)[0]
                 if p == label: break
-            
-            if p == 0: print('p == 0')
-            
+                        
             predictions.append(p)
         
         predictions = np.asarray(predictions)
@@ -757,7 +779,7 @@ that gets better accuracy than what SVM does on its own. Yes, this accuracy may
 seem low but it is much better than randomly picking a value, where the
 probability of randomly picking correctly is about 10%.
 
-### Experiment 5: Hyperparameter Tuning
+# Experiment 5: Hyperparameter Tuning
 
 Now it is time to tune our hyperparameters. We must find a hyperparameter C, or
 the Regularization parameter, that can possible achieve a higher accuracy.
@@ -820,7 +842,8 @@ figure = figure.set_ylabel('Accuracy')
 From the above graph we can find our optimal hyperparameter for C. With this optimal
 hyperparameter we will now test our model's final accuracy with test data set.
 
-### Experiment 6: Performing the Final Evaluation & Testing for Overfit
+# Experiment 6: Performing the Final Evaluation & Checking for Overfit
+
 
 ```python
 vectorizer, x_train, y_train, x_dev, y_dev, x_test, y_test = data_sets.copy()
@@ -846,27 +869,46 @@ was only by itself. We created a model that outperformed SVM and then we tuned
 this model's hyperparameters to find an optimal value. We then outperformed SVM
 yet again.
 
+### Results and Conclusions
+
+Results showed that Naïve Bayes and KNN where not the right classifiers for the kind of data that was associated with this project even after moderate hyperparameters had been located for each. In the end it was the Support Vector Machines that showed to have any handle on the data. Without any hyperparameter tuning SVM was able to score higher than Naïve Bayes and KNN with their optimal hyperparameters. Yes, SVM’s accuracy was also low, approximately some 30%, however, with the developed Major Classifier model with its optimal hyperparameters that I made for this project, predictions could then be made with accuracies above 35% and almost to 36%. This is much better than just randomly guessing which would select a correct answer some 10% of the time. In conclusion, I set out to see if I could create a version of a known classification model that could calculate better accuracies than those of the classifications model without my enhancements. I am pleased to say that I was able to create such a model and contribute to an increased calculated accuracy.
 Thank you for reading my blog post,
 
 Again thank you,
 
 Zacary Cotton
 
+```python
+
+```
+
 # Challenges Faced
 
-   This project presented many challenges as the data set was very large and very difficult to predict. Many of the comments were quite long, non-English, and not all encoded in the same format. As for the ratings, class representation was not exactly even. The smallest range of values was 10 whiles the largest was closer to 726470, so the class representation was quite skewed. Also, many ratings went many places behind the decimal point. To develop a model with such precision that could deal with such issues could likely only be done with a Neural Network. Many questions arrived as research began. Questions such as, Can this be done without a Neural Network? Which model should be the starting point? How to achieve an increased accuracy? What hyperparameters are necessary? Can I implement an optimization idea to increase accuracy? Fortunately, all of these questions were able to be answered. But the main question was, Can I make a model to predict the data? Can I increase this model’s accuracy? The answer to both of these challenges was yes. A model can be made to predict the data and this model is not a Neural Network. And yes, I could increase the achieved accuracy.
+This project presented many challenges as the data set was very large and very difficult to predict.
+Many of the comments were quite long, non-english, and not all encoded in the same format. As for
+the ratings, class representation was not exactly even. The smallest range of values was 10 while
+the largest was closer to 726470, so class representation was quite skewed. Also, many ratings went
+many places behind the decimal point. To develop a model with such precision that could deal with
+such issues could likely only be done with a Neural Network. Many questions arrived as research began.
+Questions such as, Can this be done without a Neural Network? Which classifier should be the starting
+point? How to achieve an increased accuracy? What hyperparameters are necessary? Can I implement an
+optimization idea to increase accuracy? Fortunately, all of these questions were able to be answered.
+But the main question was, Can a model be made to predict the data? Can this model’s accuracy be
+increased? The answer to both of these challenges was yes. A model can be made to predict the data and
+this model is not a Neural Network. And yes, the accuracy could be increased via an optimization idea.
 
 
+```python
+
+```
 
 # References
 
-sklearn’s Naïve Bayes example:
+• sklearn’s Naïve Bayes example:
 https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.MultinomialNB.html#sklearn.naive_bayes.MultinomialNB
 
-
-sklearn’s KNN example:
+• sklearn’s KNN example:
 https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html
 
-
-sklearn’s SVM example:
+• sklearn’s SVM example:
 https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html
