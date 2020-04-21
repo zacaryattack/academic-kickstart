@@ -941,6 +941,12 @@ comment's rating is on the left or the right side of the rating continuum. Once 
 algorithm detects which side the rating is on, it makes a prediction or passes the
 comment to the next classifier to make a more precise prediction.
 
+Results demonstrated that with my developed algorithm, there was an increase in accuracy
+of some 3%. After my classifier with ensemble methods received hyperparameter tuning,
+there was another increase in accuracy of almost 1%. Altogether my classifier makes
+predictions with accuracy that is 2.9-4% higher than that of the accuracy achieved by
+SVM on its own.
+
 
 ```python
 
