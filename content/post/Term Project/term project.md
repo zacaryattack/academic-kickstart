@@ -339,7 +339,7 @@ is closer to 4,000 and our largest class representation is closer to 160000.
 Get_Scaled_Data simply scaled each group so that the count of all ratings would
 be less than or equal to N, or 500,000
 
-Our data count is now 499996, this should be large enough to develop our algorithm
+Our data count is now 499,996, this should be large enough to develop our algorithm
 while also being small enough that algorithm test times will not take longer than
 30 minutes to compute.
 
