@@ -6,12 +6,10 @@ date: 2020-01-05
 summary: "The goal of this project is to develop a classifier to aid in the classification of comments onto a rating scale of 1 to 10."
 ---
 
-Zacary Cotton
-
+Zacary Cotton 
 100 103 1997
 
-CSE 5334 - Data Mining
-
+CSE 5334 - Data Mining 
 Term Project
 
 #{{% staticref "files/100 103 1997 Zacary Cotton - Term Project.ipynb" "newtab" %}}Please download my ipynb code here.{{% /staticref %}}
