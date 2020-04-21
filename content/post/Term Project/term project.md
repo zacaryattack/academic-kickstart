@@ -14,11 +14,11 @@ in this .ipynb file must be executed sequentially.
 
 The boardgamegeek-reviews dirrectory can be obtained from [here](https://www.kaggle.com/jvanelteren/boardgamegeek-reviews).
 
-# The Focus of This Blog
-In this blog post we develop a classifier to aid in the classification of comments
-onto a rating scale of 1 to 10. Along the way we explore the application of several
-different classifier models on a data set consisting of user made comments associated
-with user selected ratings.
+# The Focus of This Post
+In this post we develop a classifier to aid in the classification of comments onto
+a rating scale of 1 to 10. Along the way we explore the application of several different
+classifier models on a data set consisting of user made comments associated with user
+selected ratings.
 
 The mapping of sentimental values to a string of characters when considering sentimental
 values of the range 0 to 1 is a task that is today quite trivial. However, implanting an
