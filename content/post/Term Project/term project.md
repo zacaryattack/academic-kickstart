@@ -8,6 +8,8 @@ summary: "The goal of this project is to develop a classifier to aid in the clas
 
 #{{% staticref "files/100 103 1997 Zacary Cotton - Term Project.ipynb" "newtab" %}}Please download my ipynb code here.{{% /staticref %}}
 
+Click [here](http://zacaryattack.pythonanywhere.com/Zacary%20Cotton/CSE%205334%20-%20Data%20Mining/Term%20Project/Classifier) to interact with a running version of the classifier that is developed in this blog.
+
 To successfully execute this .ipynb file, the dirrectory 'boardgamegeek-reviews'
 must be located within the same dirrectory as this .ipynb file.
 The boardgamegeek-reviews dirrectory can be obtained from [here](https://www.kaggle.com/jvanelteren/boardgamegeek-reviews).
