@@ -36,7 +36,7 @@ Bayes and KNN methods. Because of SVM’s success it was chosen as the starting 
 for learning the data at hand. However, even though SVM did outperform the others,
 its accuracy still struggled greatly to pass the value range 30-32%.
 
-S the main challenge became, how to increase this accuracy? The answer was, by implementing
+So the main challenge became, how to increase this accuracy? The answer was, by implementing
 an optimization idea via ensemble methods. So here we develop several model configurations
 and select the combination that performed best. Results demonstrated that there was an
 increase in accuracy, of some 2.9-4%, which is often expected when using ensemble methods.
