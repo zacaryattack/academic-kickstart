@@ -12,6 +12,8 @@ Term Project - CSE 5334 - Data Mining
 
 #{{% staticref "files/100 103 1997 Zacary Cotton - Term Project.ipynb" "newtab" %}}Please download my ipynb code here.{{% /staticref %}}
 
+#[Please watch a video of my classifier here.](https://www.kaggle.com/jvanelteren/boardgamegeek-reviews).
+
 To successfully execute this .ipynb file, the directory 'boardgamegeek-reviews'
 must be located within the same directory as this .ipynb file and all cells
 in this .ipynb file must be executed sequentially.
