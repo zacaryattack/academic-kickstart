@@ -3,7 +3,7 @@ title: Term Project - CSE 5334 - Data Mining
 date: 2020-01-05
 
 # Put any other Academic metadata here...
-summary: "The goal of this project is to develop a classifier to aid in the classification of comments onto a rating scale of 1 to 10."
+summary: "The goal of this project is to develop a classifier to aid in the classification of comments onto a rating scale of 1 to 10. (link to video: https://youtu.be/WM1a1z39pAc)"
 ---
 
 Zacary Cotton - 100 103 1997
