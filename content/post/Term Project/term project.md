@@ -35,7 +35,7 @@ Naïve Bayes would have hands down, outperformed all and would have been the go-
 this kind of data. But as the research will show, it could not keep up with the success of
 SVM. However, on the other hand, SVM only managed to maintain a position that was some
 2-4% above NB. But as was the solution to the challenge, a more layered approach to SVM
-with ensemble methods demonstrated to be the key in increasing the accuracy.
+demonstrated to be the key in increasing the accuracy.
 
 Of the investigated models, SVM was noticed to consecutively outperform both Naïve
 Bayes and KNN methods. Because of SVM’s success it was chosen as the starting method
@@ -43,9 +43,9 @@ for learning the data at hand. However, even though SVM did outperform the other
 its accuracy still struggled greatly to pass the value range 30-32%.
 
 So the main challenge became, how to increase this accuracy? The answer was, by implementing
-an optimization idea via ensemble methods. So here we develop several model configurations
+an optimization idea via a layered SVM. So here we develop several model configurations
 and select the combination that performed best. Results demonstrated that there was an
-increase in accuracy, of some 2.9-4%, which is often expected when using ensemble methods.
+increase in accuracy, of some 2.9-4%.
 ### Obtaining the Data & Data Pre-processing
 We begin by importing the necessary libraries and building the csv path in
 order to load the data, which upon download is located in a directory called
@@ -702,8 +702,8 @@ From the graph above we can see that as we increase the number of classes,
 we decrease SVM's accuracy. So that did not work. But we did get really good
 accuracy when the problem was binary, so is there some way to keep the
 problem binary and get higher accuracy than SVM on its own?
-# Experiment 4: Making the Contribution: Ensemble Methods
-Next we will define a model that will utilize ensemble methods. There will be
+# Experiment 4: Making the Contribution: a Layered SVM
+Next we will define a model that will utilize a Layered SVM form. There will be
 several SVM classifiers trained on the same data, but with different labels.
 Each classifier will make a binary decision until an overall classification can
 be made. The model will have 1 classifier for each class. Each classifier will be
@@ -920,7 +920,7 @@ accuracy? What hyperparameters are necessary? Can I implement an optimization id
 to increase accuracy? Fortunately, all of these questions were able to be answered.
 But the main questions were, Can a model be made to predict the data? Can this model’s
 accuracy be increased? The answer to both of these challenges was yes. A model could
-be made to predict the data and the accuracy could be increased by ensemble Methods.
+be made to predict the data and the accuracy could be increased by a layered SVM.
 
 
 ```python
@@ -931,8 +931,7 @@ be made to predict the data and the accuracy could be increased by ensemble Meth
 Because many classifiers performed so poorly with the given data, the main plan for
 attack became to develop a model that could perform better and achieve higher accuracy.
 The model I developed for this project ended up being a more layered version of SVM
-that applied ensemble methods such as utilizing multiple SVM classifiers that had been
-trained to give independent answers.
+that utilized multiple SVM classifiers that had been trained to give independent answers.
 
 My algorithm involved using several SVM classifiers that were trained on the same data,
 but with different labels for each classifier. Each classifier makes a binary decision
@@ -944,10 +943,9 @@ algorithm detects which side the rating is on, it makes a prediction or passes t
 comment to the next classifier to make a more precise prediction.
 
 Results demonstrated that with my developed algorithm, there was an increase in accuracy
-of some 3%. After my classifier with ensemble methods received hyperparameter tuning,
-there was another increase in accuracy of almost 1%. Altogether my classifier makes
-predictions with accuracy that is 2.9-4% higher than that of the accuracy achieved by
-SVM on its own.
+of some 3%. After my classifier received hyperparameter tuning, there was another increase
+in accuracy of almost 1%. Altogether my classifier makes predictions with accuracy that is
+2.9-4% higher than that of the accuracy achieved by SVM on its own.
 
 
 ```python
