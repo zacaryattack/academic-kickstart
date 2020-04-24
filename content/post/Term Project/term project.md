@@ -423,9 +423,8 @@ def Ratings_toInt(ratings_float):
     return ratings_int
 ```
 Ratings_toInt will convert the float rating to an integer rating by following
-the rule,
-        if rating - int(rating) > .5 then rating = rating + 1
-        else rating is equal to rating
+the rule, if rating - int(rating) > .5 then rating = int(rating + 1) else rating
+is equal to int(rating)
 
 And now we create and test a Naive Bayes classifier.
 ### Naive Bayes Performance
