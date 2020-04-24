@@ -10,9 +10,9 @@ Zacary Cotton - 100 103 1997
 
 Term Project - CSE 5334 - Data Mining 
 
-#{{% staticref "files/100 103 1997 Zacary Cotton - Term Project.ipynb" "newtab" %}}Please download my ipynb code here.{{% /staticref %}}
-
 #[Please watch a video demonstration of my classifier here.](https://youtu.be/WM1a1z39pAc)
+
+#{{% staticref "files/100 103 1997 Zacary Cotton - Term Project.ipynb" "newtab" %}}Please download my ipynb code here.{{% /staticref %}}
 
 To successfully execute this .ipynb file, the directory 'boardgamegeek-reviews'
 must be located within the same directory as this .ipynb file and all cells
