@@ -871,7 +871,7 @@ a = accuracy_score(int_test, p)*100
 print('major classifier final accuracy: {:.3f}%\n'.format(a))
 ```
 
-    major classifier final accuracy: 35.754%
+    major classifier final accuracy: 35.707%
     
 
 Nice, our final accuracy is a good improvement over what SVM could do when it
