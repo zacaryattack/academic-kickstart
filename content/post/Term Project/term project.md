@@ -535,7 +535,7 @@ print('SVM accuracy: {:.3f}%\n'.format(accuracy))
 accuracies['SVM'] = accuracy
 ```
 
-    SVM accuracy: 32.444%
+    SVM accuracy: 31.444%
     
 
 Ok, well given the accuracy we saw with Naive Bayes and KNN, this is actually
