@@ -702,7 +702,7 @@ we decrease SVM's accuracy. So that did not work. But we did get really good
 accuracy when the problem was binary, so is there some way to keep the
 problem binary and get higher accuracy than SVM on its own?
 # Experiment 4: Making the Contribution: a Layered SVM
-Next we will define a model that will utilize a Layered SVM form. There will be
+Next we will define a model that will utilize a layered SVM form. There will be
 several SVM classifiers trained on the same data, but with different labels.
 Each classifier will make a binary decision until an overall classification can
 be made. The model will have 1 classifier for each class. Each classifier will be
