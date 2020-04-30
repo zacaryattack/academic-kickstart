@@ -850,8 +850,10 @@ figure = figure.set_ylabel('Accuracy')
 
 {{< figure library="true" src="p5.jpg" lightbox="true" >}}
 
-From the above graph we can find our optimal hyperparameter for C. With this optimal
-hyperparameter we will now test our model's final accuracy with test data set.
+From the above graph we can find our optimal hyperparameter for C.
+
+With this optimal hyperparameter we will now perform
+our final testing using all data that was provided to us.
 # Experiment 6: Performing the Final Evaluation & Checking for Overfit
 
 
