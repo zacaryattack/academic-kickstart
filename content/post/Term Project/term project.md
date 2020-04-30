@@ -27,7 +27,7 @@ classifier models on a data set consisting of user made comments associated with
 selected ratings.
 
 The mapping of sentimental values to a string of characters when considering sentimental
-values of the range 0 to 1 is a task that is today quite trivial. However, implanting an
+values of the range 0 to 1 is a task that is today quite trivial. However, implementing an
 algorithm to map a string of characters to sentimental values of the range 0 to 10 and
 sentimental values can be 7.009 or 3.00901, this task proved to be quite difficult. I had
 used Naïve Bayes before and prior to engaging in this experiment, I would have assumed that
@@ -35,17 +35,17 @@ Naïve Bayes would have hands down, outperformed all and would have been the go-
 this kind of data. But as the research will show, it could not keep up with the success of
 SVM. However, on the other hand, SVM only managed to maintain a position that was some
 2-4% above NB. But as was the solution to the challenge, a more layered approach to SVM
-demonstrated to be the key in increasing the accuracy.
+demonstrated to be the key in increasing the experienced performance.
 
 Of the investigated models, SVM was noticed to consecutively outperform both Naïve
 Bayes and KNN methods. Because of SVM’s success it was chosen as the starting method
 for learning the data at hand. However, even though SVM did outperform the others,
 its accuracy still struggled greatly to pass the value range 30-32%.
 
-So the main challenge became, how to increase this accuracy? The answer was, by implementing
+So the main challenge became, how to increase this performance? The answer was, by implementing
 an optimization idea via a layered SVM. So here we develop several model configurations
 and select the combination that performed best. Results demonstrated that there was an
-increase in accuracy, of some 2.9-4%.
+increase in performance of some 2.9-4%.
 ### Obtaining the Data & Data Pre-processing
 We begin by importing the necessary libraries and building the csv path in
 order to load the data, which upon download is located in a directory called
@@ -78,7 +78,7 @@ print(csv_path)
     /Users/zmo/here/jupyter/data mining/project/boardgamegeek-reviews/bgg-13m-reviews.csv
 
 Now that we have a path to our data we must read it into memory and preprocess
-it by formating the comments and ratings. For the comments, we format off
+it by formating the comments and ratings. For the comments, we format off any
 unnecessary elements such as extra whitespace, non-alpha characters, non-english
 characters, and make all characters lowercase. For the ratings, we simply ensure
 that all ratings have values that are type float.
@@ -395,9 +395,11 @@ data_sets = Split_DF_as_XY(scaled_df, train=.7, dev=.15, test=.15)
 
 ### Deciding on a Classifier
 At long last, we now finally have our data in the appropriate format and we are
-ready to begin experimentation.
+ready to begin classifier experimentation.
 
-Our first question is, What classifier maybe best suited for the given data?
+Our first question is, What classifier maybe best suited for the given data? To
+answer this question we will interview a series of classifiers and use a simple
+metric like accuracy to help highlight the surface performance of the classifiers.
 
 Because the data is text, we will try our luck with Naive Bayes. However, becasue
 we are going to test the data with Naive Bayes, we must create a helper function
@@ -595,7 +597,7 @@ print('SVM: binary accuracy: {:.3f}%\n'.format(accuracy))
     SVM: binary accuracy: 91.479%
     
 
-Wow, now that is impressive accuracy. However, the problem is quite simplified.
+Wow, now that is good accuracy. However, the problem is quite simplified.
 We need this kind of accuracy, but with multiclasses.
 
 Let us perform some more experiments to see what we are dealing with. Can we
@@ -788,12 +790,12 @@ print('major classifier accuracy: {:.3f}%\n'.format(a))
     
 
 Thats better than what SVM can do all on its own! We did it, we created a model
-that gets better accuracy than what SVM does on its own. Yes, this accuracy may
+that has better performance than what SVM does on its own. Yes, this accuracy may
 seem low but it is much better than randomly picking a value, where the
 probability of randomly picking correctly is about 10%.
 # Experiment 5: Hyperparameter Tuning
 Now it is time to tune our hyperparameters. We must find a hyperparameter C, or
-the Regularization parameter, that can possible achieve a higher accuracy.
+the Regularization parameter, that can possibly achieve higher performance.
 
 Below we test different values for C, display a plotted relationship between
 C values and accuracy, and then we select the best value for C.
@@ -889,16 +891,16 @@ been located for each. In the end it was the Support Vector Machines that showed
 have any handle on the data. Without any hyperparameter tuning SVM was able to score
 higher than Naïve Bayes and KNN with their optimal hyperparameters.
 
-Yes, SVM’s accuracy was also low, approximately some 30%, however, with the developed
+Yes, SVM’s performance was also low, accuracies some 30%, however, with the developed
 Major Classifier model with its optimal hyperparameters that I made for this project,
 predictions could then be made with accuracies above 35% and almost to 36%. This is much
 better than just randomly guessing which would select a correct answer some 10% of the
 time.
 
 In conclusion, I set out to see if I could create a version of a known classification
-model that could calculate better accuracies than those of the classifications model
+model that could achieve better performance than those of the classifications model
 without my enhancements. I am pleased to say that I was able to create such a model and
-contribute to an increased calculated accuracy.
+contribute to an increased performance.
 Thank you for reading my blog post,
 
 Again thank you,
@@ -914,16 +916,16 @@ This project presented many challenges as the data set was very large and very
 difficult to predict. Many of the comments were quite long, non-english, and
 not all encoded in the same format. As for the ratings, class representation was
 not exactly even. The smallest range of values was 10 while the largest was closer
-to 726470, so class representation was quite skewed. Also, many ratings went many
+to 726470, so class representations were initially skewed. Often ratings went many
 places behind the decimal point. To develop a model with such precision that could
 deal with such issues could likely only be done with a Neural Network. Many questions
 arrived as research began. Questions such as, Can this be done without a Neural
 Network? Which classifier should be the starting point? How to achieve an increased
-accuracy? What hyperparameters are necessary? Can I implement an optimization idea
-to increase accuracy? Fortunately, all of these questions were able to be answered.
+performance? What hyperparameters are necessary? Can I implement an optimization idea
+to increase performance? Fortunately, all of these questions were able to be answered.
 But the main questions were, Can a model be made to predict the data? Can this model’s
-accuracy be increased? The answer to both of these challenges was yes. A model could
-be made to predict the data and the accuracy could be increased by a layered SVM.
+performance be increased? The answer to both of these challenges was yes. A model could
+be made to predict the data and the performance could be increased by a layered SVM.
 
 
 ```python
@@ -931,10 +933,10 @@ be made to predict the data and the accuracy could be increased by a layered SVM
 ```
 
 # The Contribution
-Because many classifiers performed so poorly with the given data, the main plan for
-attack became to develop a model that could perform better and achieve higher accuracy.
-The model I developed for this project ended up being a more layered version of SVM
-that utilized multiple SVM classifiers that had been trained to give independent answers.
+Because many classifiers performed poorly with the given data, the main plan for attack
+became to develop a model that could perform better and achieve higher performance. The
+model I developed for this project ended up being a more layered version of SVM that
+utilized multiple SVM classifiers that had been trained to give independent answers.
 
 My algorithm involved using several SVM classifiers that were trained on the same data,
 but with different labels for each classifier. Each classifier makes a binary decision
