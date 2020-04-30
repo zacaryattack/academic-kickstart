@@ -856,7 +856,9 @@ hyperparameter we will now test our model's final accuracy with test data set.
 
 
 ```python
-vectorizer, x_train, y_train, x_dev, y_dev, x_test, y_test = data_sets.copy()
+final_testing_data_sets = Split_DF_as_XY(all_data_df, train=.7, dev=.15, test=.15)
+
+vectorizer, x_train, y_train, x_dev, y_dev, x_test, y_test = final_testing_data_sets
 
 int_train = Ratings_toInt(y_train)
 int_test = Ratings_toInt(y_test)
