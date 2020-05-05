@@ -910,9 +910,9 @@ Again thank you,
 
 Zacary Cotton
 
-#[Please watch a video demonstration of my classifier here.](https://youtu.be/WM1a1z39pAc)
-
 #{{% staticref "files/100 103 1997 Zacary Cotton - Term Project.ipynb" "newtab" %}}Please download my ipynb code here.{{% /staticref %}}
+
+#[Please watch a video demonstration of my classifier here.](https://youtu.be/WM1a1z39pAc)
 
 ```python
 
@@ -974,3 +974,13 @@ https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsCl
 
 • sklearn’s SVM example:
 https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html
+
+```python
+
+```
+
+# My ipynb Code & Video Demonstration Link
+
+#{{% staticref "files/100 103 1997 Zacary Cotton - Term Project.ipynb" "newtab" %}}Please download my ipynb code here.{{% /staticref %}}
+
+#[Please watch a video demonstration of my classifier here.](https://youtu.be/WM1a1z39pAc)
