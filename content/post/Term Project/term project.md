@@ -884,7 +884,7 @@ print('major classifier final accuracy: {:.3f}%\n'.format(a))
 Nice, our final accuracy is a good improvement over what SVM could do when it
 was only by itself. We created a model that outperformed SVM and then we tuned
 this model's hyperparameters to find an optimal value. We then tested this model
-with its optimal hyperparameters and then outperformed SVM yet again.
+with its optimal hyperparameters on the entire data set and outperformed SVM again.
 ### Results and Conclusions
 Results showed that Naïve Bayes and KNN where not the right classifiers for the kind
 of data that was associated with this project even after moderate hyperparameters had
