@@ -910,6 +910,10 @@ Again thank you,
 
 Zacary Cotton
 
+#[Please watch a video demonstration of my classifier here.](https://youtu.be/WM1a1z39pAc)
+
+#{{% staticref "files/100 103 1997 Zacary Cotton - Term Project.ipynb" "newtab" %}}Please download my ipynb code here.{{% /staticref %}}
+
 ```python
 
 ```
