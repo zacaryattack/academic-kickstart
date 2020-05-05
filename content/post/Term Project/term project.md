@@ -860,6 +860,7 @@ final testing using all the data that was provided to us.
 
 
 ```python
+# our final testing will use all the data
 final_testing_data_sets = Split_DF_as_XY(all_data_df, train=.7, dev=.15, test=.15)
 
 vectorizer, x_train, y_train, x_dev, y_dev, x_test, y_test = final_testing_data_sets
@@ -882,8 +883,8 @@ print('major classifier final accuracy: {:.3f}%\n'.format(a))
 
 Nice, our final accuracy is a good improvement over what SVM could do when it
 was only by itself. We created a model that outperformed SVM and then we tuned
-this model's hyperparameters to find an optimal value. We then outperformed SVM
-yet again.
+this model's hyperparameters to find an optimal value. We then tested this model
+with its optimal hyperparameters and then outperformed SVM yet again.
 ### Results and Conclusions
 Results showed that Naïve Bayes and KNN where not the right classifiers for the kind
 of data that was associated with this project even after moderate hyperparameters had
@@ -898,9 +899,11 @@ better than just randomly guessing which would select a correct answer some 10% 
 time.
 
 In conclusion, I set out to see if I could create a version of a known classification
-model that could achieve better performance than those of the classifications model
-without my enhancements. I am pleased to say that I was able to create such a model and
-contribute to an increased performance.
+model that could achieve better performance than that of the classification model
+without my enhancements. I am pleased to say that I was able to create such a model,
+tune its hyperparameters, and contribute to an increased performance that was revealed,
+when testing the model on the entire data set.
+
 Thank you for reading my blog post,
 
 Again thank you,
