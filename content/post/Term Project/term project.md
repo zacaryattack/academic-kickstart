@@ -856,7 +856,7 @@ From the above graph we can find our optimal hyperparameter for C.
 
 With this optimal hyperparameter we will now perform our
 final testing using all the data that was provided to us.
-# Experiment 6: Performing the Final Evaluation & Checking for Overfit
+# Experiment 6: Performing the Final Evaluation & Checking for Overfit Using All of the Data
 
 
 ```python
