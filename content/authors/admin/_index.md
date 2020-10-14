@@ -18,7 +18,7 @@ organizations:
   url: ""
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include automated services, cloud computing, and neural networks.
+bio: My research interests include automated services, cluster computing, and neural networks.
 
 interests:
 - Linguistics
